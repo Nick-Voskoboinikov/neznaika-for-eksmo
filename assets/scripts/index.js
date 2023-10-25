@@ -8,22 +8,22 @@ function hideAllSections(){
 function checkBg(){
     switch (true) {
         case (document.querySelector('section#idle').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg.png\')';
             break;
         case (document.querySelector('section#idles').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg.png\')';
             break;
         case (document.querySelector('section#listening').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'assets/img/bg.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg.png\')';
             break;
         case (document.querySelector('section#answering').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg.png\')';
             break;
         case (document.querySelector('section#loader').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg1.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg1.png\')';
             break;
         case (document.querySelector('section#goodbye').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg1.png\')';
+            document.body.style.backgroundImage = 'url(\'./assets/img/bg1.png\')';
             break;
       }
     }
