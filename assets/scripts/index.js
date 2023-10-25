@@ -14,7 +14,7 @@ function checkBg(){
             document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
             break;
         case (document.querySelector('section#listening').style.display=='flex'):
-            document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
+            document.body.style.backgroundImage = 'url(\'assets/img/bg.png\')';
             break;
         case (document.querySelector('section#answering').style.display=='flex'):
             document.body.style.backgroundImage = 'url(\'../assets/img/bg.png\')';
