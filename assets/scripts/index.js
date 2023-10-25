@@ -23,6 +23,7 @@ function checkBg(){
             document.body.style.backgroundImage = 'url(\'./assets/img/bg1.png\')';
             break;
         case (document.querySelector('section#goodbye').style.display=='flex'):
+            console.log(document.currentScript);
             document.body.style.backgroundImage = 'url(\'./assets/img/bg1.png\')';
             break;
       }
