@@ -528,6 +528,7 @@ img.hb {
 
 
 @media screen and (width: 2560px) {
+/* @media screen and (width: 2560px) and (height: 1920px) { */
   div.btnwrapper{
   height: 20dvh;
   }
@@ -546,8 +547,29 @@ img.hb {
     border-radius: 75px;
   }
 }
+@media screen and (width: 1536px) {
+/* __!!! @media screen and (width: 1536px) and (height: 1152px) { */
+  div.btnwrapper{
+  height: 14.42dvh;
+  }
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 48px;
+    line-height: 47px;
+  }
+  button#go {
+    font-size: 90px;
+    line-height: 120px;
+    padding: 60px 200px;
+    border-radius: 120px;
+  }
+}
 
 @media screen and (width: 1440px) {
+/* @media screen and (width: 1440px) and (height: 1080px) { */
   div.btnwrapper{
   height: 20dvh;
   }
@@ -568,6 +590,7 @@ img.hb {
 }
 
 @media screen and (width: 1280px) {
+/* @media screen and (width: 1280px) and (height: 960px) { */
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
@@ -585,6 +608,7 @@ img.hb {
 }
 
 @media screen and (width: 1024px) {
+ /* @media screen and (width: 1024px) and (height: 768px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -601,6 +625,7 @@ img.hb {
   }
 }
 @media screen and (width: 768px) {
+/* @media screen and (width: 768px) and (height: 576px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -618,6 +643,7 @@ img.hb {
 }
 
 @media screen and (width: 425px) {
+/* @media screen and (width: 425px) and (height: 318px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -635,6 +661,7 @@ img.hb {
 }
 
 @media screen and (width: 375px) {
+/* @media screen and (width: 375px) and (height: 281px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -651,6 +678,7 @@ img.hb {
   }
 }
 @media screen and (width: 320px) {
+/* @media screen and (width: 320px) and (height: 240px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -668,25 +696,6 @@ img.hb {
 }
 
 
-@media screen and (width: 1536px) and (height: 1152px) {
-  div.btnwrapper{
-  height: 14.42dvh;
-  }
-  div.intro>div.titlewrapper{
-  margin-left: 20%;
-  }
-  div.book> textarea {
-    width: 40%;
-    font-size: 48px;
-    line-height: 47px;
-  }
-  button#go {
-    font-size: 90px;
-    line-height: 120px;
-    padding: 60px 200px;
-    border-radius: 120px;
-  }
-}
 /*
 
 @media screen and (width: 4096px) {
