@@ -528,6 +528,9 @@ div.book > textarea:nth-child(2) {
   margin-left: 3dvh;
   margin-top: 11dvh;
 }
+#start > div.intro > img {
+  width: 13dvh;
+}
 
 @keyframes slideup {
   from {
