@@ -52,7 +52,7 @@ function startAnswering(){
     document.querySelector('#answer').focus();
     
     document.querySelector('#question').disabled=true;
-    document.querySelector('#answer').innerText='Lorem Ipsum dolor set amet.. Коротыш! Воистину коротыш!';
+    document.querySelector('#answer').innerText='Вот тебе и раз! Я просто люблю приключения!';
     setTimeout(function(){
         hideAllSections();
         document.querySelector('section#idle').style.display='flex';
@@ -95,7 +95,7 @@ function goodbye(){
 }
 
 function fishechki(){
-    // console.log('Креатив и фишечки)');
+     console.log('Креатив и фишечки)');
     if((((document.querySelector('section#listening')).style).display != 'flex') && (((document.querySelector('section#answering')).style).display != 'flex') && (((document.querySelector('section#goodbye')).style).display != 'flex') && (((document.querySelector('section#loader')).style).display != 'flex')){
         
     if(! document.querySelector('section#idles>img.neznaika')){
@@ -105,6 +105,12 @@ function fishechki(){
         neznaikaCaster.classList.add('neznaika');
         neznaikaCaster.src = './assets/img/cake_magician.gif';
         (document.querySelector('section#idles')).append(neznaikaCaster);
+        let happybirthday = document.createElement('img');
+        happybirthday.alt = 'С днём рожения, Николай Носов!';
+        happybirthday.title = 'С днём рожения, Николай Носов!';
+        happybirthday.classList.add('hb');
+        happybirthday.src = './assets/img/hb.svg';
+        (document.querySelector('section#idles')).append(happybirthday);
         }
 
         hideAllSections();
@@ -113,7 +119,7 @@ function fishechki(){
         window.setTimeout(function(){
             hideAllSections();
             (document.querySelector('section#idle')).style.display='flex';
-        },5500);
+        },5000);
     }
 }
 

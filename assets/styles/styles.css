@@ -10,11 +10,6 @@
   box-sizing: border-box;
   }
 @font-face {
-    font-family: "Airfool";
-    src: url('../fonts/Airfool.ttf'),
-    url('../fonts/Airfool.otf') format('opentype');
-    }
-@font-face {
     font-family: "Racama-Regular";
     src: ('../fonts/Racama.otf') format('opentype');
     }
@@ -412,58 +407,19 @@ div.intro>div.titlewrapper {
     background-repeat: no-repeat;
     background-clip: border-box;
 }
-div.intro>div.titlewrapper>span{
-  font-family: Airfool;
-  font-size: 19rem;
-  text-transform: uppercase;
-  color: var(--color-green, #28BF0F);
-  display: inline-block;
-  line-height: 110px;
-}
-div.intro>div.titlewrapper>span:nth-child(1){
-    transform: rotate(-27.85deg) translateY(1.9em) translateX(-.6em);
-}
-div.intro>div.titlewrapper>span:nth-child(2){
-    transform: rotate(-27.52deg) translateY(1.6em) translateX(-.59em);
-}
-div.intro>div.titlewrapper>span:nth-child(3){
-    transform: rotate(-17.28deg)  translateY(1.48em) translateX(-.41em);
-}
-div.intro>div.titlewrapper>span:nth-child(4){
-    transform: rotate(-13.31deg) translateY(1.26em) translateX(-.39em);
-}
-div.intro>div.titlewrapper>span:nth-child(5){
-    transform: rotate(-9.51deg) translateY(1.04em) translateX(-.38em);
-}
-div.intro>div.titlewrapper>span:nth-child(6){
-    transform: rotate(-5.68deg) translateY(.98em) translateX(-.38em);
-}
-div.intro>div.titlewrapper>span:nth-child(7){
-    transform: rotate(-2.88deg) translateY(.98em) translateX(-.28em);
-}
-div.intro>div.titlewrapper>span:nth-child(8){
-    transform: rotate(-0.2deg) translateY(.99em) translateX(-.38em);
-}
-div.intro>div.titlewrapper>span:nth-child(9){
-    transform: rotate(3.29deg) translateY(1.04em) translateX(-.38em);
-}
-div.intro>div.titlewrapper>span:nth-child(10){
-    transform: rotate(6.56deg)  translateY(1.06em) translateX(-.46em);
-}
-div.intro>div.titlewrapper>span:nth-child(11){
-    transform: rotate(10.26deg) translateY(1.28em) translateX(-.45em);
-}
-div.intro>div.titlewrapper>span:nth-child(12){
-    transform: rotate(14.35deg) translateY(1.5em) translateX(-.45em);
-}
-div.intro>div.titlewrapper>span:nth-child(13){
-    transform: rotate(18.79deg) translateY(1.8em) translateX(-.35em);
-}
-div.intro>div.titlewrapper>span:nth-child(14){
-    transform: rotate(23.67deg) translateY(1.9em) translateX(-.2em);
-}
-div.intro>div.titlewrapper>span:nth-child(15){
-    transform: rotate(31.18deg) translateY(2.1em) translateX(0.08em);
+div.intro>div.titlewrapper:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 95%;
+  height: 95%;
+  top: 5dvh;
+  left: 2.5dvw;
+  z-index: 2;
+  background-image: url('../img/ask.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-clip: border-box;
 }
 
 
@@ -489,6 +445,7 @@ button#go {
   line-height: 120px;
   padding: 60px 200px;
   border-radius: 120px;
+  cursor: pointer;
 }
 button#go:hover,button#go:active {
   background-color: #950000;
@@ -510,7 +467,7 @@ div.book> textarea {
   height: 22dvh;
   width: 43%;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.80);
+  color: rgba(0, 0, 0, 1);
   font-family: Racama;
   font-size: 90px;
   font-style: normal;
@@ -530,6 +487,29 @@ div.book > textarea:nth-child(2) {
 }
 #start > div.intro > img {
   width: 13dvh;
+}
+img.hb {
+  position: absolute;
+  top: 0;
+  -webkit-animation: 1.5s fadein 2.5s linear forwards;
+  animation: 1.5s fadein 2.5s linear forwards;
+}
+
+#start>.intro>.eksmo-logo{
+  position:absolute;
+  z-index:3;
+  right:3dvw;
+  top:3dvh;
+  cursor: pointer;
+}
+
+@-webkit-keyframes fadein {
+  0%{ opacity: 0 }
+  100%  { opacity: 1 }
+}
+@keyframes fadein {
+  0%{ opacity: 0 }
+  100%  { opacity: 1 }
 }
 
 @keyframes slideup {
@@ -554,13 +534,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 11rem;
-    line-height: 50px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 56px;
+    line-height: 86px;
   }
   button#go {
     font-size: 56px;
@@ -577,13 +554,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 6.5rem;
-    line-height: 35px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 32px;
+    line-height: 45px;
   }
   button#go {
     font-size: 32px;
@@ -597,13 +571,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 5.5rem;
-    line-height: 35px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 32px;
+    line-height: 40px;
   }
   button#go {
     font-size: 32px;
@@ -617,13 +588,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 4.6rem;
-    line-height: 1px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 22px;
+    line-height: 32px;
   }
   button#go {
     font-size: 22px;
@@ -636,19 +604,16 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 3.56rem;
-    line-height: 1px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 16px;
+    line-height: 32px;
   }
   button#go {
     font-size: 16.88px;
     line-height: 22px;
     padding: 12px 38px;
-    border-radius: 22px;
+    border-radius: 24px;
   }
 }
 
@@ -656,13 +621,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 1.95rem;
-    line-height: 1px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 9px;
+    line-height: 14px;
   }
   button#go {
     font-size: 9.34px;
@@ -676,13 +638,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 1.72rem;
-    line-height: 1px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 9px;
+    line-height: 12px;
   }
   button#go {
     font-size: 9px;
@@ -695,13 +654,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 1.46rem;
-    line-height: .1px;
-  }
   div.book> textarea {
     width: 40%;
     font-size: 7px;
+    line-height: 10px;
   }
   button#go {
     font-size: 7px;
@@ -712,20 +668,17 @@ div.book > textarea:nth-child(2) {
 }
 
 
-@media screen and (width: 1536px) and (height: 741x) {
+@media screen and (width: 1536px) and (height: 1152px) {
   div.btnwrapper{
   height: 14.42dvh;
   }
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
-  div.intro>div.titlewrapper>span {
-    font-size: 5rem;
-    line-height: 36px;
-  }
   div.book> textarea {
     width: 40%;
-    font-size: 90px;
+    font-size: 48px;
+    line-height: 47px;
   }
   button#go {
     font-size: 90px;
