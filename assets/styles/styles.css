@@ -558,6 +558,10 @@ div.book > textarea:nth-child(2) {
     font-size: 11rem;
     line-height: 50px;
   }
+  div.book> textarea {
+    width: 40%;
+    font-size: 56px;
+  }
   button#go {
     font-size: 56px;
     line-height: 75px;
@@ -577,6 +581,30 @@ div.book > textarea:nth-child(2) {
     font-size: 6.5rem;
     line-height: 35px;
   }
+  div.book> textarea {
+    width: 40%;
+    font-size: 32px;
+  }
+  button#go {
+    font-size: 32px;
+    line-height: 42px;
+    padding: 22px 70px;
+    border-radius: 42px;
+  }
+}
+
+@media screen and (width: 1280px) {
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  }
+  div.intro>div.titlewrapper>span {
+    font-size: 5.5rem;
+    line-height: 35px;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 32px;
+  }
   button#go {
     font-size: 32px;
     line-height: 42px;
@@ -593,6 +621,10 @@ div.book > textarea:nth-child(2) {
     font-size: 4.6rem;
     line-height: 1px;
   }
+  div.book> textarea {
+    width: 40%;
+    font-size: 22px;
+  }
   button#go {
     font-size: 22px;
     line-height: 30px;
@@ -607,6 +639,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper>span {
     font-size: 3.56rem;
     line-height: 1px;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 16px;
   }
   button#go {
     font-size: 16.88px;
@@ -624,6 +660,10 @@ div.book > textarea:nth-child(2) {
     font-size: 1.95rem;
     line-height: 1px;
   }
+  div.book> textarea {
+    width: 40%;
+    font-size: 9px;
+  }
   button#go {
     font-size: 9.34px;
     line-height: 12px;
@@ -640,6 +680,10 @@ div.book > textarea:nth-child(2) {
     font-size: 1.72rem;
     line-height: 1px;
   }
+  div.book> textarea {
+    width: 40%;
+    font-size: 9px;
+  }
   button#go {
     font-size: 9px;
     line-height: 11px;
@@ -654,6 +698,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper>span {
     font-size: 1.46rem;
     line-height: .1px;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 7px;
   }
   button#go {
     font-size: 7px;
@@ -674,6 +722,10 @@ div.book > textarea:nth-child(2) {
   div.intro>div.titlewrapper>span {
     font-size: 5rem;
     line-height: 36px;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 90px;
   }
   button#go {
     font-size: 90px;
