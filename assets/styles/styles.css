@@ -414,7 +414,7 @@ div.intro>div.titlewrapper:before {
   width: 95%;
   height: 95%;
   top: 5dvh;
-  left: 2.5dvw;
+  left: .75dvw;
   z-index: 2;
   background-image: url('../img/ask.svg');
   background-size: contain;
@@ -440,7 +440,7 @@ button#go {
   font-family: 'Racama-Regular';
   color: var(--color-white, #FFFFFF);
   background-color: var(--color-rose, #BD1622);
-  font-size: 90px;
+  font-size: 9rem;
   font-weight: 400;
   line-height: 120px;
   padding: 60px 200px;
@@ -453,14 +453,14 @@ button#go:hover,button#go:active {
 section#listening>div.book{
   display: block;
   position: absolute;
-  z-index: 2;
+  padding: 0;
+  width: 100dvw;
   background-image: url('../img/book.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
-  bottom: 0;
-  width: 100dvw;
-  height: 35dvh;
+  background-position-y: bottom;
+  bottom: -1px;
   animation: 1.05s 1 normal slideup;
 }
 div.book> textarea {
@@ -491,6 +491,8 @@ div.book > textarea:nth-child(2) {
 img.hb {
   position: absolute;
   top: 0;
+  width: 90%;
+  opacity: 0;
   -webkit-animation: 1.5s fadein 2.5s linear forwards;
   animation: 1.5s fadein 2.5s linear forwards;
 }
@@ -523,9 +525,25 @@ img.hb {
 }
 
 
-
-
-
+@media screen and (width: 4096px) {
+  /* @media screen and (width: 4096px) and (height: 4072px) { */
+    div.btnwrapper{
+    height: 14.42dvh;
+    }
+    div.intro>div.titlewrapper{
+    margin-left: 15%;
+    }
+    div.intro>div.titlewrapper>span {
+      font-size: 19rem;
+      line-height: 110px;
+    }
+    button#go {
+      font-size: 90px;
+      line-height: 120px;
+      padding: 60px 200px;
+      border-radius: 120px;
+    }
+  }
 
 @media screen and (width: 2560px) {
 /* @media screen and (width: 2560px) and (height: 1920px) { */
@@ -695,25 +713,3 @@ img.hb {
   }
 }
 
-
-/*
-
-@media screen and (width: 4096px) {
-  div.btnwrapper{
-  height: 14.42dvh;
-  }
-  div.intro>div.titlewrapper{
-  margin-left: 15%;
-  }
-  div.intro>div.titlewrapper>span {
-    font-size: 19rem;
-    line-height: 110px;
-  }
-  button#go {
-    font-size: 90px;
-    line-height: 120px;
-    padding: 60px 200px;
-    border-radius: 120px;
-  }
-}
-*/
