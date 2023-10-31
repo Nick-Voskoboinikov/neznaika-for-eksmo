@@ -465,7 +465,7 @@ section#listening>div.book{
 }
 div.book> textarea {
   height: 22dvh;
-  width: 43%;
+  width: 41%;
   background-color: transparent;
   color: rgba(0, 0, 0, 1);
   font-family: Racama;
@@ -544,6 +544,25 @@ img.hb {
       border-radius: 120px;
     }
   }
+  @media screen and (min-width: 2560px) and (max-width: 4096px) {
+    div.btnwrapper{
+    height: 20dvh;
+    }
+    div.intro>div.titlewrapper{
+    margin-left: 20%;
+    }
+    div.book> textarea {
+      width: 40%;
+      font-size: 56px;
+      line-height: 86px;
+    }
+    button#go {
+      font-size: clamp(56px,73px,90px);
+      line-height: clamp(75px,98px,120px);
+      padding: clamp(38px,98px,120px) clamp(125px,162px,200px);
+      border-radius: clamp(75px,98px,120px);
+    }
+  }
 
 @media screen and (width: 2560px) {
 /* @media screen and (width: 2560px) and (height: 1920px) { */
@@ -565,6 +584,23 @@ img.hb {
     border-radius: 75px;
   }
 }
+@media screen and (min-width: 1536px) and (max-width: 2560px) {
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(48px,52px,56px);
+    line-height: clamp(47px,66px,86px);
+  }
+  button#go {
+    font-size: 90px clamp(47px,66px,86px);
+    line-height: clamp(75px,98px,120px);
+    padding: clamp(38px,66px,60px) clamp(125px,162px,200px);
+    border-radius: clamp(75px,98px,120px);
+  }
+}
+
 @media screen and (width: 1536px) {
 /* __!!! @media screen and (width: 1536px) and (height: 1152px) { */
   div.btnwrapper{
@@ -585,6 +621,26 @@ img.hb {
     border-radius: 120px;
   }
 }
+@media screen and (min-width: 1440px) and (max-width: 1536px) {
+  div.btnwrapper{
+  height: 20dvh;
+  }
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  height: 45%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(32px,40px,48px);
+    line-height: clamp(45px,46px,47px);
+  }
+  button#go {
+    font-size: clamp(32px,61px,90px);
+    line-height: clamp(42px,81px,120px);
+    padding: clamp(22px,42px,60px) clamp(70px,135px,200px);
+    border-radius: clamp(42px,81px,120px);
+  }
+}
 
 @media screen and (width: 1440px) {
 /* @media screen and (width: 1440px) and (height: 1080px) { */
@@ -598,6 +654,22 @@ img.hb {
     width: 40%;
     font-size: 32px;
     line-height: 45px;
+  }
+  button#go {
+    font-size: 32px;
+    line-height: 42px;
+    padding: 22px 70px;
+    border-radius: 42px;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 32px;
+    line-height: clamp(40px,41px,42px);
   }
   button#go {
     font-size: 32px;
@@ -624,6 +696,58 @@ img.hb {
     border-radius: 42px;
   }
 }
+@media screen and (min-width: 1200px) and (max-width: 1280px) {
+  div.intro>div.titlewrapper{
+    margin-left: 20%;
+    }
+    div.book> textarea {
+      width: 40%;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    button#go {
+      font-size: 32px;
+      line-height: 42px;
+      padding: 22px 70px;
+      border-radius: 42px;
+    }
+}
+
+@media screen and (width: 1200px) {
+/* @media screen and (width: 1200px) and (height: 900px) { */
+  div.intro>div.titlewrapper{
+    margin-left: 20%;
+    }
+    div.book> textarea {
+      width: 40%;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    button#go {
+      font-size: 32px;
+      line-height: 42px;
+      padding: 22px 70px;
+      border-radius: 42px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+  div.intro>div.titlewrapper{
+  margin-left: 20%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(22px,26px,32px);
+    line-height: clamp(32px,36px,40px);
+  }
+  button#go {
+    font-size: clamp(22px,26px,32px);
+    line-height: clamp(30px,36px,42px);
+    padding: clamp(15px,20px,22px) clamp(50px,60px,70px);
+    border-radius: clamp(30px,36px,42px);
+  }
+}
+
 
 @media screen and (width: 1024px) {
  /* @media screen and (width: 1024px) and (height: 768px) { */
@@ -642,6 +766,23 @@ img.hb {
     border-radius: 30px;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  div.intro>div.titlewrapper{
+  margin-left: 15%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(16px,20px,22px);
+    line-height: 32px;
+  }
+  button#go {
+    font-size: clamp(16px,20px,22px);
+    line-height: clamp(22px,26px,30px);
+    padding: clamp(12px,14px,15px) clamp(38px,44px,50px);
+    border-radius: clamp(24px,26px,30px);
+  }
+}
+
 @media screen and (width: 768px) {
 /* @media screen and (width: 768px) and (height: 576px) { */
   div.intro>div.titlewrapper{
@@ -653,10 +794,26 @@ img.hb {
     line-height: 32px;
   }
   button#go {
-    font-size: 16.88px;
+    font-size: 16px;
     line-height: 22px;
     padding: 12px 38px;
     border-radius: 24px;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  div.intro>div.titlewrapper{
+  margin-left: 15%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(9px,12px,16px);
+    line-height: clamp(14px,20px,32px);
+  }
+  button#go {
+    font-size: clamp(10px,14px,16px);
+    line-height: clamp(12px,18px,22px);
+    padding: clamp(6px,8px,12px) clamp(21px,30px,38px);
+    border-radius: clamp(12px,16px,24px);
   }
 }
 
@@ -671,10 +828,26 @@ img.hb {
     line-height: 14px;
   }
   button#go {
-    font-size: 9.34px;
+    font-size: 10px;
     line-height: 12px;
     padding: 6px 21px;
     border-radius: 12px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 425px) {
+  div.intro>div.titlewrapper{
+  margin-left: 15%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: 9px;
+    line-height: clamp(12px,14px,14px);
+  }
+  button#go {
+    font-size: clamp(9px,10px,10px);
+    line-height: clamp(11px,12px,12px);
+    padding: 5px clamp(18px,19px,21px);
+    border-radius: clamp(11px,12px,12px);
   }
 }
 
@@ -693,6 +866,22 @@ img.hb {
     line-height: 11px;
     padding: 5px 18px;
     border-radius: 11px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  div.intro>div.titlewrapper{
+  margin-left: 15%;
+  }
+  div.book> textarea {
+    width: 40%;
+    font-size: clamp(7px,8px,9px);
+    line-height: clamp(10px,11px,12px);
+  }
+  button#go {
+    font-size: clamp(7px,8px,9px);
+    line-height: clamp(10px,11px,11px);
+    padding: 5px clamp(15px,17px,18px);
+    border-radius: clamp(10px,10px,11px);
   }
 }
 @media screen and (width: 320px) {

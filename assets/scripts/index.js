@@ -1,6 +1,46 @@
  const URL = '/api/neznaika';  // 🤌❓
                                // + re: line 93
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+recognition.lang = 'ru-RU';
     
+recognition.addEventListener("result", (e) => {
+    texts = document.querySelector('#question');
+    
+    tn = document.createTextNode('');
+    texts.innerHTML='';
+    texts.appendChild(tn);
+    const text = Array.from(e.results)
+      .map((result) => result[0])
+      .map((result) => result.transcript)
+      .join('');
+  
+    tn.innerText = text;
+    if (e.results[0].isFinal) {
+        console.log(text, typeof text);
+      if (text.includes("Незнайка")) {
+        startListening(URL);
+        // tn = document.createTextNode('');
+        // p.classList.add("replay");
+      } else if (text.includes("Спасибо")) {
+        goodbye();
+      } else {
+      tn = document.createTextNode('');
+      tn.innerText = text;
+      texts.appendChild(tn);
+      }
+    }
+  });
+  
+  recognition.addEventListener("end", () => {
+    recognition.start();
+  });
+
+  
+  
+  
     function recordAndSend(URL){
     navigator.mediaDevices.getUserMedia({ audio: true})
     .then(stream => {
@@ -82,10 +122,13 @@ function checkBg(){
     }
     
 function startListening(URL){
+    audio = document.getElementsByTagName('audio')[0];
+    audio.querySelector('source').src='./assets/img/listening.mp3';
     shortcut.remove("space");
     hideAllSections();
     document.querySelector('section#listening').style.display='flex';
     checkBg();
+    audio.play();
     document.querySelector('#question').disabled=false;
     document.querySelector('#question').innerText='';
     document.querySelector('#question').value=''; // 🤔
@@ -101,12 +144,16 @@ function startListening(URL){
 }
 
 function startAnswering(URL){
+    audio = document.getElementsByTagName('audio')[0];
+    audio.querySelector('source').src='./assets/img/lyublyu_predumyvat.mp3';
     shortcut.remove("enter");
     document.querySelector('#listening > img').src='./assets/img/answering.gif';
     document.querySelector('#answer').focus();
     
     document.querySelector('#question').disabled=true;
-    document.querySelector('#answer').innerText='Вот тебе и раз! Я просто люблю приключения!';
+    document.querySelector('#answer').innerText=`Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+    audio.play();
+
     setTimeout(function(URL){
         hideAllSections();
         document.querySelector('section#idle').style.display='flex';
@@ -143,7 +190,7 @@ function goodbye(){
         setTimeout(function(){
             hideAllSections();
             document.querySelector('section#loader').style.display='flex';
-            },3500);
+            },2500);
         },3500);
 
 }
@@ -207,6 +254,8 @@ document.addEventListener('DOMContentLoaded',function(URL){
             idlesection.style.display='flex';
             welcomesection.remove();
             fishki = setInterval(fishechki,65000);
+
+            recognition.start();
 
             shortcut.add("space",function(URL) {
                 startListening(URL);
