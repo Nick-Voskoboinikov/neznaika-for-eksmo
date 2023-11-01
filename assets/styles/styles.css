@@ -459,8 +459,8 @@ section#listening>div.book{
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
-  background-position-y: bottom;
-  bottom: -1px;
+  background-position-y: 0;
+  bottom:-4rem;
   animation: 1.05s 1 normal slideup;
 }
 div.book> textarea {
@@ -516,11 +516,11 @@ img.hb {
 
 @keyframes slideup {
   from {
-    bottom: -34dvh;
+    background-position-y: 20rem;
   }
 
   to {
-    bottom: 0;
+    background-position-y: 0;
   }
 }
 
@@ -544,7 +544,7 @@ img.hb {
       border-radius: 120px;
     }
   }
-  @media screen and (min-width: 2560px) and (max-width: 4096px) {
+  @media screen and (min-width: 2561px) and (max-width: 4095px) {
     div.btnwrapper{
     height: 20dvh;
     }
@@ -584,7 +584,7 @@ img.hb {
     border-radius: 75px;
   }
 }
-@media screen and (min-width: 1536px) and (max-width: 2560px) {
+@media screen and (min-width: 1537px) and (max-width: 2559px) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
@@ -621,7 +621,7 @@ img.hb {
     border-radius: 120px;
   }
 }
-@media screen and (min-width: 1440px) and (max-width: 1536px) {
+@media screen and (min-width: 1441px) and (max-width: 1535px) {
   div.btnwrapper{
   height: 20dvh;
   }
@@ -662,7 +662,7 @@ img.hb {
     border-radius: 42px;
   }
 }
-@media screen and (min-width: 1280px) and (max-width: 1440px) {
+@media screen and (min-width: 1281px) and (max-width: 1439px) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
@@ -696,7 +696,7 @@ img.hb {
     border-radius: 42px;
   }
 }
-@media screen and (min-width: 1200px) and (max-width: 1280px) {
+@media screen and (min-width: 1201px) and (max-width: 1279px) {
   div.intro>div.titlewrapper{
     margin-left: 20%;
     }
@@ -731,7 +731,7 @@ img.hb {
     }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1200px) {
+@media screen and (min-width: 1025px) and (max-width: 1199px) {
   div.intro>div.titlewrapper{
   margin-left: 20%;
   }
@@ -766,7 +766,7 @@ img.hb {
     border-radius: 30px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -800,7 +800,7 @@ img.hb {
     border-radius: 24px;
   }
 }
-@media screen and (min-width: 425px) and (max-width: 768px) {
+@media screen and (min-width: 426px) and (max-width: 767px) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -834,7 +834,7 @@ img.hb {
     border-radius: 12px;
   }
 }
-@media screen and (min-width: 375px) and (max-width: 425px) {
+@media screen and (min-width: 376px) and (max-width: 424px) {
   div.intro>div.titlewrapper{
   margin-left: 15%;
   }
@@ -851,7 +851,7 @@ img.hb {
   }
 }
 
-@media screen and (width: 375px) {
+@media screen and (max-width: 375px) {
 /* @media screen and (width: 375px) and (height: 281px) { */
   div.intro>div.titlewrapper{
   margin-left: 15%;
