@@ -1,5 +1,5 @@
  const URL = '/api/neznaika';  // 🤌❓
-                               // + re: line 93
+
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
