@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Спроси Незнайку!</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127880;</text></svg>">
+    <link rel="icon" href="./assets/img/favicon.png">
 
     <link rel="stylesheet" href="./assets/styles/styles.css">
     <script src="./assets/scripts/ks.js"></script>
@@ -16,24 +15,11 @@
 <body>
 
     <section id="loader">
-        <!--<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-            type="module"></script>
-        <dotlottie-player src="https://lottie.host/400dfb4e-fb74-44ec-b0f4-1835a445ad12/Oy1Fe4xE7G.json"
-            background="transparent" speed="1" style="width: 100%; height: 100%" direction="1" mode="normal" loop
-            autoplay></dotlottie-player>
-        <!-- <noscript>--><img src="./assets/img/baloon.gif" alt="Незнайка" title="Незнайка" class="neznaika" /><!--</noscript> -->
-    </section>
-
-    <section id="start">
-        <img src="./assets/img/baloon.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
         <div class="intro">
             <img src="./assets/img/Exmo-Logo.png" alt="Издательство &quot;Эксмо&quot;"
                 title="Издательство &quot;Эксмо&quot;" onclick="window.open('https://eksmo.ru/','_blank','');"
                 class="eksmo-logo" />
-            <div class="titlewrapper"></div>
-            <div class="btnwrapper">
-                <button id="go">Начать</button>
-            </div>
+            <div class="titlewrapper"><img src="./assets/img/ask.svg" alt="Спроси Незнайку"  ></div>
         </div>
     </section>
 
@@ -54,8 +40,9 @@
         </audio>
         <img src="./assets/img/listening.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
         <div class="book">
-            <textarea id="question" cols="30" rows="10"></textarea>
-            <textarea id="answer" cols="30" rows="10" disabled></textarea>
+            <p class="question">Как тебе удается быть таким жизнелюбом, любопытным и не терять радость
+                жизни?</p>
+            <p class="answer">Вот тебе и раз! Я просто люблю приключения!</p>
 
         </div>
     </section>

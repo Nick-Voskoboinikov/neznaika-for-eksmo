@@ -3,6 +3,7 @@
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
+recognitionAllowed=true;
 recognition.interimResults = true;
 recognition.lang = 'ru-RU';
     
@@ -20,7 +21,7 @@ recognition.addEventListener("result", (e) => {
     tn.innerText = text;
     if (e.results[0].isFinal) {
         console.log(text, typeof text);
-      if (text.includes("Незнайка")) {
+      if ((text.includes("Скажи незнайка")) || (text.includes("Незнайка скажи")) || (text.includes("Не знай cкажи")) || (text.includes("Не знай ка скажи")) || (text.includes("Незнайка, у меня вопрос")) || (text.includes("У меня вопрос незнайка")) ) {
         startListening(URL);
         // tn = document.createTextNode('');
         // p.classList.add("replay");
@@ -35,7 +36,9 @@ recognition.addEventListener("result", (e) => {
   });
   
   recognition.addEventListener("end", () => {
-    recognition.start();
+    if(recognitionAllowed){
+        recognition.start();
+    }
   });
 
   
@@ -45,10 +48,8 @@ recognition.addEventListener("result", (e) => {
     navigator.mediaDevices.getUserMedia({ audio: true})
     .then(stream => {
         const mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.start()
 
-        document.querySelector('#start').addEventListener('click', function(){
-            mediaRecorder.start();
-        });
         let audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
             audioChunks.push(event.data);
@@ -129,10 +130,8 @@ function startListening(URL){
     document.querySelector('section#listening').style.display='flex';
     checkBg();
     audio.play();
-    document.querySelector('#question').disabled=false;
-    document.querySelector('#question').innerText='';
-    document.querySelector('#question').value=''; // 🤔
-    document.querySelector('#question').focus();
+    // document.querySelector('.question').innerText='';
+    // document.querySelector('.question').value=''; // 🤔
     // recordAndSend(URL);
     shortcut.add("enter",function() {
         startAnswering();
@@ -150,8 +149,7 @@ function startAnswering(URL){
     document.querySelector('#listening > img').src='./assets/img/answering.gif';
     document.querySelector('#answer').focus();
     
-    document.querySelector('#question').disabled=true;
-    document.querySelector('#answer').innerText=`Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+    //document.querySelector('#answer').innerText=`Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
     audio.play();
 
     setTimeout(function(URL){
@@ -159,8 +157,8 @@ function startAnswering(URL){
         document.querySelector('section#idle').style.display='flex';
         checkBg();
         document.querySelector('#listening > img').src='./assets/img/listening.gif';
-        document.querySelector('#answer').innerText='';
-        document.querySelector('#answer').value=''; // 🤔
+        // document.querySelector('.answer').innerText='';
+        // document.querySelector('.answer').value=''; // 🤔
 
         shortcut.add("space",function() {
             startListening(URL);
@@ -187,11 +185,16 @@ function goodbye(){
     document.querySelector('section#goodbye').style.display='flex';
     checkBg();
     setTimeout(function(){
+        document.querySelector('section#goodbye').style.backgroundImage = 'url("./assets/img/bg1.png")';
+        console.log("smth happened");
         setTimeout(function(){
+            console.log("bg change");
             hideAllSections();
             document.querySelector('section#loader').style.display='flex';
-            },2500);
-        },3500);
+            checkBg();
+            document.querySelector('section#goodbye').style.backgroundImage = 'url("./assets/img/bg.png")';
+            },4500);
+        },2500);
 
 }
 
@@ -233,21 +236,14 @@ function fishechki(){
 document.addEventListener('DOMContentLoaded',function(URL){
     window.setTimeout(function(){
         const loader=document.querySelector('#loader');
-        const start=document.querySelector('#start');
         hideAllSections();
-        start.style.display='flex';
-    },2500);
-    const startbtn=document.querySelector('button#go');
+    },1500);
     
-    startbtn.addEventListener('click', function(URL){
-        const startsection = document.querySelector('section#start');
-        const neznaika = document.querySelector('section#start');
         const welcomesection = document.querySelector('section#welcome');
         const idlesection = document.querySelector('section#idle');
 
         hideAllSections();
         welcomesection.style.display='flex';
-        startsection.remove();
         
         setTimeout(function(URL){
             hideAllSections();
@@ -272,5 +268,4 @@ document.addEventListener('DOMContentLoaded',function(URL){
                     'target':document
                     });
         },5000);
-});
 });
