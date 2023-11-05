@@ -12,47 +12,25 @@
     <script src="./assets/scripts/index.js"></script>
 </head>
 
-<body>
+<body data-state="loader">
 
     <section id="loader">
         <div class="intro">
+            <img src="./assets/img/azbuka.png" alt="Издательская Группа &quot;Азбука-Аттикус&quot;"
+                title="Издательская Группа &quot;Азбука-Аттикус&quot;"
+                onclick="window.open('https://azbooka.ru/','_blank','');" class="logo" />
             <img src="./assets/img/Exmo-Logo.png" alt="Издательство &quot;Эксмо&quot;"
                 title="Издательство &quot;Эксмо&quot;" onclick="window.open('https://eksmo.ru/','_blank','');"
-                class="eksmo-logo" />
-            <div class="titlewrapper"><img src="./assets/img/ask.svg" alt="Спроси Незнайку"  ></div>
+                class="logo" />
+            <div class="titlewrapper"><img src="./assets/img/ask.svg" alt="Спроси Незнайку"></div>
         </div>
     </section>
-
-    <section id="welcome">
-        <img src="./assets/img/welcome.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
-        <!-- 5s -->
-    </section>
-
-    <section id="idle">
-        <img src="./assets/img/idle.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
-    </section>
-
-    <section id="idles"></section>
-
-    <section id="listening">
-        <audio style="display:none;">
-            <source type="audio/mpeg">
-        </audio>
-        <img src="./assets/img/listening.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
-        <div class="book">
-            <p class="question">Как тебе удается быть таким жизнелюбом, любопытным и не терять радость
-                жизни?</p>
-            <p class="answer">Вот тебе и раз! Я просто люблю приключения!</p>
-
+    <section id="city">
+        <div class="neznaika"></div>
+        <div>
+            <div class="book"></div>
         </div>
     </section>
-
-    <section id="answering">
-        <img src="./assets/img/answering.gif" alt="Незнайка" title="Незнайка" class="neznaika" />
-    </section>
-
-    <section id="goodbye">
-    </section>-
 </body>
 
 </html>
