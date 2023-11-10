@@ -311,7 +311,7 @@ let response = `Я люблю придумывать разные приключ
 // };
 // xhttp.open("GET", "filename", true);
 // xhttp.send();
-return URL;
+return response;
 }
 
 function startTheParty(){
