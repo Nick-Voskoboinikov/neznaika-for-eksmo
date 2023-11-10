@@ -3,6 +3,7 @@
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
+const synth = window.speechSynthesis;
 recognitionPaused=0;
 ListeniningInitiated=0;
 recognition.interimResults = true;
@@ -50,7 +51,7 @@ recognition.addEventListener("result", (e) => {
         if ((text.includes("Скажи незнайка")) || (text.includes("Незнайка скажи")) || (text.includes("скажи незнайка")) || (text.includes("незнайка скажи")) || (text.includes("скажи Незнайка")) || (text.includes("Незнайка скажи"))  || (text.includes("Не знай cкажи")) || (text.includes("Не знай ка скажи")) || (text.includes("Не знаю ка скажи")) || (text.includes("Незнайка, у меня вопрос")) || (text.includes("У меня вопрос незнайка")) ) {
         shortcut.remove("space");
         startListening(URL);
-      } else if (text.includes("Улетай незнайка") || (text.includes("Улетай не знай ка")) || (text.includes("Не знай ка улетай")) || (text.includes("Незнайка улетай")) || (text.includes("Незнайка, улетай")) || (text.includes("Улетай, Незнайка"))) {
+      } else if (text.includes("Улетай незнайка") || text.includes("улетай Незнайка") || (text.includes("Улетай не знай ка")) || (text.includes("Не знай ка улетай")) || (text.includes("Незнайка улетай")) || (text.includes("Незнайка, улетай")) || (text.includes("Улетай, Незнайка")) || text.includes("улетай незнайка") || text.includes("незнайка улетай") || text.includes("улетаю незнайка") || text.includes("улетаю Незнайка") || text.includes("незнайка улетаю")) {
         goodbye();
       } else {
 
@@ -119,12 +120,17 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 }
 
 function debounceAudioMess(text){
-if ((text.slice(-1) == '.') || (text.slice(-1) == '!') || (text.slice(-1) == '?') ){
-    text=text.slice(0,(text.length-1)) + '?';
+if (navigator.userAgent.indexOf("Edg") != -1) {
+    if ((text.slice(-1) == '.') || (text.slice(-1) == '!') || (text.slice(-1) == '?') ){
+        text=text.slice(0,(text.length-1)) + '?';
+        return text;
+    } else {
+        return false;
+    }
+} else if (navigator.userAgent.indexOf("Chrome") != -1) {
+    text=text.charAt(0).toUpperCase() + text.slice(1) + '?';
     return text;
- } else {
-    return false;
- }
+}
 }
 
 async function sendVoice(form, URL) {
@@ -176,12 +182,13 @@ function startAnswering(URL,got_text){
     let answer = document.createElement('p');
     answer.classList.add('answer');
     texts.appendChild(answer);
-    answer.innerText = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
-    audioPlay('./assets/img/lyublyu_predumyvat.mp3');
+    let textToVoiceOut=`Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+    answer.innerText = textToVoiceOut;
+    let voiceLength=getVoiceLength(textToVoiceOut);
+    console.log(voiceLength);
+    googleVoiceAnswer(textToVoiceOut);
+    // audioPlay('./assets/img/lyublyu_predumyvat.mp3');
     setTimeout(function(URL){
-        // document.querySelector('.answer').innerText='';
-        // document.querySelector('.answer').value=''; // 🤔
-
         setTimeout(function(){
             document.body.setAttribute('data-state', 'idle');
         },13500);
@@ -194,7 +201,51 @@ function startAnswering(URL,got_text){
                 'target':document
                 });
 
-        },20000);
+        },voiceLength);
+}
+
+function googleVoiceAnswer(voiceThisText) {
+  if (synth.speaking) {
+    console.error("speechSynthesis.speaking");
+    return;
+  }
+
+  if (voiceThisText !== "") {
+    let utterThis = new SpeechSynthesisUtterance(voiceThisText);
+
+    utterThis.onend = function (event) {
+      console.log("SpeechSynthesisUtterance.onend");
+    };
+
+    utterThis.onerror = function (event) {
+      console.error("SpeechSynthesisUtterance.onerror");
+    };
+
+    // utterThis.voice =
+    utterThis.lang='ru-RU';
+    utterThis.default=false;
+    utterThis.localService=false;
+    utterThis.voiceURI='Google русский';
+    utterThis.name='Google русский';
+    utterThis.pitch = 1.7;
+    utterThis.rate = 1.6;
+    synth.speak(utterThis);
+  }
+}
+
+function getVoiceLength(textToVoiceOut){
+    // 60000 => 190 words ~ 1140 chars;
+    // 1 word ~ 316 msec
+    // 1 chars ~ 53 msec
+
+    let words=textToVoiceOut.trim().split(/\s+/).length;
+    let chars=1+(textToVoiceOut.split('').length);
+    let wordsLength=315 * words;
+    let charsLength=53 * chars;
+
+    console.log('words: '+words, '\nchars: '+chars);
+
+    return Math.max(wordsLength, charsLength);;
 }
 
 function goodbye(){
@@ -250,15 +301,13 @@ function fishechki(){
     // }
 }
 
-document.addEventListener('DOMContentLoaded',function(URL){
-    setTimeout(function(){
+function startTheParty(URL){
         document.body.setAttribute('data-state', 'welcome');
         setTimeout(function(){
             document.body.setAttribute('data-state', 'idle');
         },3750);
         recognition.start();
         fishki = setInterval(fishechki,65000); // todo!!!
-    },1500);
   
         setTimeout(function(URL){
 
@@ -280,4 +329,8 @@ document.addEventListener('DOMContentLoaded',function(URL){
                     'target':document
                     });
         },5000);
+}
+
+(document.querySelector('button#go')).addEventListener('click',(URL)=>{
+    startTheParty(URL);
 });
