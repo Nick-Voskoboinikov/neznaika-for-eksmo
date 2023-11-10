@@ -4,8 +4,8 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 const recognition = new SpeechRecognition();
 const synth = window.speechSynthesis;
-recognitionPaused=0;
-ListeniningInitiated=0;
+recognitionPaused=0; // allow/prohibit recognize words generally
+ListeniningInitiated=0; // allow/prohibit listening to new question
 recognition.interimResults = true;
 recognition.lang = 'ru-RU';
 
@@ -44,8 +44,6 @@ recognition.addEventListener("result", (e) => {
       .join('');
     if (e.results[0].isFinal) {
         console.log(text, typeof text);
-        console.log('ListeniningInitiated=', ListeniningInitiated);
-        console.log('recognitionPaused=', recognitionPaused);
         if ((text.includes("Скажи незнайка")) || (text.includes("Незнайка скажи")) || (text.includes("скажи незнайка")) || (text.includes("незнайка скажи")) || (text.includes("скажи Незнайка")) || (text.includes("Незнайка скажи"))  || (text.includes("Не знай cкажи")) || (text.includes("Не знай ка скажи")) || (text.includes("Не знаю ка скажи")) || (text.includes("Незнайка, у меня вопрос")) || (text.includes("У меня вопрос незнайка")) ) {
         shortcut.remove("space");
         startListening();
@@ -178,7 +176,7 @@ function startAnswering(got_text){
     answer.innerText = got_text;
     texts.appendChild(answer);
     let voiceLength=getVoiceLength(got_text);
-    console.log(voiceLength);
+    console.log('Estimated voiceLength: '+voiceLength);
     googleVoiceAnswer(got_text);
     // audioPlay('./assets/img/lyublyu_predumyvat.mp3');
     setTimeout(function(){
@@ -238,9 +236,11 @@ function getVoiceLength(textToVoiceOut){
     let wordsLength=315 * words;
     let charsLength=53 * chars;
 
+    coeficient=1.2;
+
     console.log('words: '+words, '\nchars: '+chars);
 
-    return Math.max(wordsLength, charsLength);;
+    return Math.max(wordsLength, charsLength) * coeficient;
 }
 
 function goodbye(){
