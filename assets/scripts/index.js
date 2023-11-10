@@ -67,10 +67,12 @@ recognition.addEventListener("result", (e) => {
             
             setTimeout(function(){
                 document.body.setAttribute('data-state', 'wondering');
-                startAnswering(URL,got_text)
-                recognitionPaused=0;
-                ListeniningInitiated=1;
-                recognition.start();
+                setTimeout(function(){
+                    startAnswering(URL,got_text)
+                    recognitionPaused=0;
+                    ListeniningInitiated=1;
+                    recognition.start();
+                },3000);
             },2000);
 
         }
@@ -228,13 +230,13 @@ function googleVoiceAnswer(voiceThisText) {
     utterThis.voiceURI='Google русский';
     utterThis.name='Google русский';
     utterThis.pitch = 1.7;
-    utterThis.rate = 1.6;
+    utterThis.rate = 1.4;
     synth.speak(utterThis);
   }
 }
 
 function getVoiceLength(textToVoiceOut){
-    // 60000 => 190 words ~ 1140 chars;
+    // 60000 MSec => 190 words ~ 1140 chars;
     // 1 word ~ 316 msec
     // 1 chars ~ 53 msec
 
@@ -303,32 +305,32 @@ function fishechki(){
 
 function startTheParty(URL){
         document.body.setAttribute('data-state', 'welcome');
-        setTimeout(function(){
-            document.body.setAttribute('data-state', 'idle');
-        },3750);
-        recognition.start();
-        fishki = setInterval(fishechki,65000); // todo!!!
-  
         setTimeout(function(URL){
+            document.body.setAttribute('data-state', 'idle');
+            recognition.start();
+            fishki = setInterval(fishechki,65000); // todo!!!
+    
+            setTimeout(function(URL){
 
 
-            shortcut.add("space",function(URL) {
-                ListeniningInitiated=1;
-                startListening(URL);
-                shortcut.remove("space");
-                },{
-                    'type':'keydown',
-                    'propagate':false,
-                    'target':document
-                    });
-            shortcut.add("esc",function() {
-                goodbye();
-                },{
-                    'type':'keydown',
-                    'propagate':false,
-                    'target':document
-                    });
-        },5000);
+                shortcut.add("space",function(URL) {
+                    ListeniningInitiated=1;
+                    startListening(URL);
+                    shortcut.remove("space");
+                    },{
+                        'type':'keydown',
+                        'propagate':false,
+                        'target':document
+                        });
+                shortcut.add("esc",function() {
+                    goodbye();
+                    },{
+                        'type':'keydown',
+                        'propagate':false,
+                        'target':document
+                        });
+            },5000);
+        },3750);
 }
 
 (document.querySelector('button#go')).addEventListener('click',(URL)=>{
