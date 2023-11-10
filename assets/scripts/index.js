@@ -1,4 +1,4 @@
- const URL = '/api/neznaika';  // 🤌❓
+// for 🤌❓see URL
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -34,7 +34,6 @@ const audioPlay = (() => {
       
     };
   })();
-
     
 recognition.addEventListener("result", (e) => {
     texts = document.querySelector('.book');
@@ -47,10 +46,9 @@ recognition.addEventListener("result", (e) => {
         console.log(text, typeof text);
         console.log('ListeniningInitiated=', ListeniningInitiated);
         console.log('recognitionPaused=', recognitionPaused);
-        ListeniningInitiated=1;
         if ((text.includes("Скажи незнайка")) || (text.includes("Незнайка скажи")) || (text.includes("скажи незнайка")) || (text.includes("незнайка скажи")) || (text.includes("скажи Незнайка")) || (text.includes("Незнайка скажи"))  || (text.includes("Не знай cкажи")) || (text.includes("Не знай ка скажи")) || (text.includes("Не знаю ка скажи")) || (text.includes("Незнайка, у меня вопрос")) || (text.includes("У меня вопрос незнайка")) ) {
         shortcut.remove("space");
-        startListening(URL);
+        startListening();
       } else if (text.includes("Улетай незнайка") || text.includes("улетай Незнайка") || (text.includes("Улетай не знай ка")) || (text.includes("Не знай ка улетай")) || (text.includes("Незнайка улетай")) || (text.includes("Незнайка, улетай")) || (text.includes("Улетай, Незнайка")) || text.includes("улетай незнайка") || text.includes("незнайка улетай") || text.includes("улетаю незнайка") || text.includes("улетаю Незнайка") || text.includes("незнайка улетаю")) {
         goodbye();
       } else {
@@ -64,16 +62,10 @@ recognition.addEventListener("result", (e) => {
             userquestion.classList.add('question');
             texts.appendChild(userquestion);
             userquestion.innerText = got_text;
-            
-            setTimeout(function(){
                 document.body.setAttribute('data-state', 'wondering');
-                setTimeout(function(){
-                    startAnswering(URL,got_text)
-                    recognitionPaused=0;
-                    ListeniningInitiated=1;
-                    recognition.start();
-                },3000);
-            },2000);
+                got_text=getResponseFromN(got_text);
+
+                setTimeout(startAnswering(got_text),3000);
 
         }
       }
@@ -85,9 +77,6 @@ recognition.addEventListener("result", (e) => {
         recognition.start();
     }
   });
-
-  
-  
   
 function recordAndSend(URL){
 navigator.mediaDevices.getUserMedia({ audio: true})
@@ -150,13 +139,16 @@ async function sendVoice(form, URL) {
     }
 }
 
-function startListening(URL){
+function startListening(){
     audioPlay('./assets/img/listening.mp3');
     document.body.setAttribute('data-state', 'answering');
     setTimeout(function(){
         document.body.setAttribute('data-state', 'listening');
+        setTimeout(function(){
+            ListeniningInitiated=1;
+        },1850);
     },1250);
-// recordAndSend(URL);
+// recordAndSend();
     // shortcut.add("enter",function() {
     //     startAnswering();
     //     },{
@@ -164,18 +156,18 @@ function startListening(URL){
     //         'propagate':false,
     //         'target':document.body
     //         });
-    shortcut.add("space",function(URL) {
-        ListeniningInitiated=1;
-        startListening(URL);
-        shortcut.remove("space");
-        },{
-            'type':'keydown',
-            'propagate':false,
-            'target':document
-            });
+            // shortcut.add("space",function() {
+            //     startListening();
+            //     shortcut.remove("space");
+            //     },{
+            //         'type':'keydown',
+            //         'propagate':false,
+            //         'target':document
+            //         });
 }
 
-function startAnswering(URL,got_text){
+function startAnswering(got_text){
+    console.log('69 got text: ', got_text);
     // shortcut.remove("enter");
     document.body.setAttribute('data-state', 'answering');
     //document.querySelector('#answer').focus();
@@ -183,19 +175,20 @@ function startAnswering(URL,got_text){
     let texts = document.querySelector('.book');
     let answer = document.createElement('p');
     answer.classList.add('answer');
+    answer.innerText = got_text;
     texts.appendChild(answer);
-    let textToVoiceOut=`Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
-    answer.innerText = textToVoiceOut;
-    let voiceLength=getVoiceLength(textToVoiceOut);
+    let voiceLength=getVoiceLength(got_text);
     console.log(voiceLength);
-    googleVoiceAnswer(textToVoiceOut);
+    googleVoiceAnswer(got_text);
     // audioPlay('./assets/img/lyublyu_predumyvat.mp3');
-    setTimeout(function(URL){
+    setTimeout(function(){
         setTimeout(function(){
             document.body.setAttribute('data-state', 'idle');
-        },13500);
+            recognitionPaused=0;
+            recognition.start();
+        },1500);
         shortcut.add("space",function() {
-            startListening(URL);
+            startListening();
             shortcut.remove("space");
             },{
                 'type':'keydown',
@@ -230,7 +223,7 @@ function googleVoiceAnswer(voiceThisText) {
     utterThis.voiceURI='Google русский';
     utterThis.name='Google русский';
     utterThis.pitch = 1.7;
-    utterThis.rate = 1.4;
+    utterThis.rate = 1.6;
     synth.speak(utterThis);
   }
 }
@@ -263,7 +256,10 @@ function goodbye(){
             document.body.setAttribute('data-state', 'loader');
             document.querySelector('#city').style.backgroundImage='';
             document.querySelector('#city>.neznaika').style.transform='translateX(-18vw) scale(0.75)';
-            },5000);
+            setTimeout(function(){
+                window.location.reload(true);
+            },1750);
+        },5000);
         },3500);
 
 }
@@ -303,19 +299,34 @@ function fishechki(){
     // }
 }
 
-function startTheParty(URL){
+function getResponseFromN(got_text){
+    //async function getResponseFromN(got_text){
+URL = '/api/neznaika/🤌❓';
+let response = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+// let xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//        return xhttp.responseText;
+//     }
+// };
+// xhttp.open("GET", "filename", true);
+// xhttp.send();
+return URL;
+}
+
+function startTheParty(){
         document.body.setAttribute('data-state', 'welcome');
-        setTimeout(function(URL){
+        setTimeout(function(){
             document.body.setAttribute('data-state', 'idle');
             recognition.start();
             fishki = setInterval(fishechki,65000); // todo!!!
     
-            setTimeout(function(URL){
+            setTimeout(function(){
 
 
-                shortcut.add("space",function(URL) {
+                shortcut.add("space",function() {
                     ListeniningInitiated=1;
-                    startListening(URL);
+                    startListening();
                     shortcut.remove("space");
                     },{
                         'type':'keydown',
@@ -333,6 +344,6 @@ function startTheParty(URL){
         },3750);
 }
 
-(document.querySelector('button#go')).addEventListener('click',(URL)=>{
-    startTheParty(URL);
+(document.querySelector('button#go')).addEventListener('click',()=>{
+    startTheParty();
 });

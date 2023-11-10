@@ -667,8 +667,8 @@ img.hb {
 @keyframes leave {
   0%{ transform: translateX(-15vw) translateY(7vh) scale(0.75); }
   15%{ transform: translateX(-15vw) translateY(7vh) scale(0.75); }
-  59.9%{ transform: translateX(31vw) translateY(7vh) scale(0.75); }
-  60%{ transform: translateX(0) translateY(0) scale(1); }
+  60.9%{ transform: translateX(31vw) translateY(7vh) scale(0.75); }
+  61%{ transform: translateX(0) translateY(0) scale(1); }
   100%{ transform: translateX(0) translateY(0) scale(1); }
 }
 
