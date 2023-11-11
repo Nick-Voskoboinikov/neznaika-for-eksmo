@@ -56,10 +56,7 @@ recognition.addEventListener("result", (e) => {
             recognitionPaused=1;
             ListeniningInitiated=0;
             recognition.stop();
-            userquestion = document.createElement('p');
-            userquestion.classList.add('question');
-            texts.appendChild(userquestion);
-            userquestion.innerText = got_text;
+            pushMessageToChatBox(got_text,'question');
                 document.body.setAttribute('data-state', 'wondering');
                 got_text=getResponseFromN(got_text);
 
@@ -170,11 +167,7 @@ function startAnswering(got_text){
     document.body.setAttribute('data-state', 'answering');
     //document.querySelector('#answer').focus();
 
-    let texts = document.querySelector('.book');
-    let answer = document.createElement('p');
-    answer.classList.add('answer');
-    answer.innerText = got_text;
-    texts.appendChild(answer);
+    pushMessageToChatBox(got_text,'answer');
     let voiceLength=getVoiceLength(got_text);
     console.log('Estimated voiceLength: '+voiceLength);
     googleVoiceAnswer(got_text);
@@ -256,6 +249,7 @@ function goodbye(){
             document.body.setAttribute('data-state', 'loader');
             document.querySelector('#city').style.backgroundImage='';
             document.querySelector('#city>.neznaika').style.transform='translateX(-18vw) scale(0.75)';
+            document.querySelector('div.book').classList.remove('fading');
             setTimeout(function(){
                 window.location.reload(true);
             },1750);
@@ -302,21 +296,39 @@ function fishechki(){
 function getResponseFromN(got_text){
     //async function getResponseFromN(got_text){
 URL = '/api/neznaika/🤌❓';
-let response = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
-// let xhttp = new XMLHttpRequest();
-// xhttp.onreadystatechange = function() {
-//     if (this.readyState == 4 && this.status == 200) {
-//        return xhttp.responseText;
-//     }
-// };
-// xhttp.open("GET", "filename", true);
-// xhttp.send();
-return response;
+
+const numbers = [`Во славу Цветочного города!`,`Ой, на эту тему лучше поговорить со Знайкой!`,`Кнопочку тоже это интересует!`];
+const answerPhrase = (max) => {
+return Math.floor(Math.random() * max);
+}
+const random1 = answerPhrase (numbers.length);
+let response = (numbers[random1]);
+//answerField.innerText = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+// theUrl='https://1da0-34-67-217-111.ngrok-free.app/prompt/?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D0%9D%D0%B5%D0%B7%D0%BD%D0%B0%D0%B9%D0%BA%D0%B0%21';
+// xmlHttp = new XMLHttpRequest();
+// xmlHttp.onreadystatechange = function() { 
+//     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+//         callback(xmlHttp.responseText);
+// }
+// xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+// xmlHttp.send(null);
+}
+
+function pushMessageToChatBox(text,className='answer'){
+    let message = document.createElement('p');
+    message.classList.add(className);
+    if( (text.includes('<') && text.includes('>')) ){
+        message.innerHTML = text;
+    } else {
+        message.innerText = text;
+    }
+    document.querySelector('div.book').appendChild(message);
 }
 
 function startTheParty(){
         document.body.setAttribute('data-state', 'welcome');
         setTimeout(function(){
+            pushMessageToChatBox(`Привет! Что ты хочешь узнать?<br><sup>(Произнесите "Скажи, Незнайка!" или нажмите на клавиатуре "<u>Пробел</u>")</sup>`);
             document.body.setAttribute('data-state', 'idle');
             recognition.start();
             fishki = setInterval(fishechki,65000); // todo!!!
