@@ -295,23 +295,24 @@ function fishechki(){
 
 function getResponseFromN(got_text){
     //async function getResponseFromN(got_text){
-URL = '/api/neznaika/🤌❓';
+// URL = '/api/neznaika/🤌❓';
 
-const numbers = [`Во славу Цветочного города!`,`Ой, на эту тему лучше поговорить со Знайкой!`,`Кнопочку тоже это интересует!`];
-const answerPhrase = (max) => {
-return Math.floor(Math.random() * max);
-}
-const random1 = answerPhrase (numbers.length);
-let response = (numbers[random1]);
-//answerField.innerText = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
-// theUrl='https://1da0-34-67-217-111.ngrok-free.app/prompt/?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D0%9D%D0%B5%D0%B7%D0%BD%D0%B0%D0%B9%D0%BA%D0%B0%21';
-// xmlHttp = new XMLHttpRequest();
-// xmlHttp.onreadystatechange = function() { 
-//     if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-//         callback(xmlHttp.responseText);
+// const numbers = [`Во славу Цветочного города!`,`Ой, на эту тему лучше поговорить со Знайкой!`,`Кнопочку тоже это интересует!`];
+// const answerPhrase = (max) => {
+// return Math.floor(Math.random() * max);
 // }
-// xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-// xmlHttp.send(null);
+// const random1 = answerPhrase (numbers.length);
+// let response = (numbers[random1]);
+//answerField.innerText = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
+theUrl='http://nick.voskoboinikov.com:8001/';
+xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = function() { 
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        return xmlHttp.responseText;
+}
+xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+xmlHttp.send(null);
+// return response;
 }
 
 function pushMessageToChatBox(text,className='answer'){
