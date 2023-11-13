@@ -294,7 +294,7 @@ function fishechki(){
 }
 
 const getResponseFromN=async (got_text)=>{
-    return await fetch('https://480e-34-133-181-88.ngrok-free.app/?text='+(encodeURIComponent(got_text)), {
+    return await fetch('https://480e-34-133-181-88.ngrok-free.app/prompt/?text='+(encodeURIComponent(got_text)), {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "77777",
