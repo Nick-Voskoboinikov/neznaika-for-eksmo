@@ -160,10 +160,7 @@ function startListening(){
 
 function startAnswering(got_text){
     console.log('69 got text: ', got_text);
-    // shortcut.remove("enter");
     document.body.setAttribute('data-state', 'answering');
-    // got_text=got_text[0].title; //!!!
-    got_text=got_text.response;
     console.log(got_text);
     //document.querySelector('#answer').focus();
 
@@ -305,7 +302,7 @@ const getResponseFromN=async (got_text)=>{
         return response.json();
       })
     .then((result)=>{
-        setTimeout(startAnswering(result),3000);
+        setTimeout(startAnswering(result[0].response),3000);
         })
     .catch((error) => { console.log('error', error); });
 };
