@@ -294,9 +294,12 @@ function fishechki(){
 }
 
 const getResponseFromN=async (got_text)=>{
-    // return await fetch('https://jsonplaceholder.typicode.com/users/'+(got_text.slice(0,(got_text.length-1)))+'/todos')
-    // !!! ^  
-    return await fetch('https://78df-34-66-125-36.ngrok-free.app/?text='+(encodeURIComponent(got_text)))
+    return await fetch('https://480e-34-133-181-88.ngrok-free.app/?text='+(encodeURIComponent(got_text)), {
+        method: "get",
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "77777",
+        }),
+      })
     .then((response) => {
         console.log(response);
         return response.json();
