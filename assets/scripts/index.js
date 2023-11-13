@@ -163,7 +163,7 @@ function startAnswering(got_text){
     // shortcut.remove("enter");
     document.body.setAttribute('data-state', 'answering');
     // got_text=got_text[0].title; //!!!
-    got_text=got_text[0].text;
+    got_text=got_text[0].response;
     console.log(got_text);
     //document.querySelector('#answer').focus();
 
