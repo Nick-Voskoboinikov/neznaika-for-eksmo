@@ -58,10 +58,7 @@ recognition.addEventListener("result", (e) => {
             recognition.stop();
             pushMessageToChatBox(got_text,'question');
                 document.body.setAttribute('data-state', 'wondering');
-                got_text=getResponseFromN(got_text);
-
-                setTimeout(startAnswering(got_text),3000);
-
+                got_text= getResponseFromN(got_text);
         }
       }
     }
@@ -165,6 +162,9 @@ function startAnswering(got_text){
     console.log('69 got text: ', got_text);
     // shortcut.remove("enter");
     document.body.setAttribute('data-state', 'answering');
+    // got_text=got_text[0].title; //!!!
+    got_text=got_text[0].text;
+    console.log(got_text);
     //document.querySelector('#answer').focus();
 
     pushMessageToChatBox(got_text,'answer');
@@ -293,27 +293,19 @@ function fishechki(){
     // }
 }
 
-function getResponseFromN(got_text){
-    //async function getResponseFromN(got_text){
-// URL = '/api/neznaika/🤌❓';
-
-// const numbers = [`Во славу Цветочного города!`,`Ой, на эту тему лучше поговорить со Знайкой!`,`Кнопочку тоже это интересует!`];
-// const answerPhrase = (max) => {
-// return Math.floor(Math.random() * max);
-// }
-// const random1 = answerPhrase (numbers.length);
-// let response = (numbers[random1]);
-//answerField.innerText = `Я люблю придумывать разные приключения и путешествовать! Мечтаю полететь ещё раз на Луну и даже на Марс! Хочу увидеть космос и другие планеты. Это так интересно!`;
-theUrl='http://nick.voskoboinikov.com:8001/';
-xmlHttp = new XMLHttpRequest();
-xmlHttp.onreadystatechange = function() { 
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-        return xmlHttp.responseText;
-}
-xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-xmlHttp.send(null);
-// return response;
-}
+const getResponseFromN=async (got_text)=>{
+    // return await fetch('https://jsonplaceholder.typicode.com/users/'+(got_text.slice(0,(got_text.length-1)))+'/todos')
+    // !!! ^  
+    return await fetch('https://78df-34-66-125-36.ngrok-free.app/?text='+(encodeURIComponent(got_text)))
+    .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+    .then((result)=>{
+        setTimeout(startAnswering(result),3000);
+        })
+    .catch((error) => { console.log('error', error); });
+};
 
 function pushMessageToChatBox(text,className='answer'){
     let message = document.createElement('p');

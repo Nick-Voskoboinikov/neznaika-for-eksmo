@@ -459,7 +459,7 @@ section#city > .neznaika {
   background-clip: border-box;
 }
 body>section#city > .neznaika{
-  transform: translateX(-15vw) translateY(7vh) scale(0.75);
+  transform: translateX(-15vw) translateY(13dvh) scale(0.75);
 }
 
 div.intro{
@@ -564,8 +564,9 @@ section#city>div>div.book{
   min-height: 110dvh;
   max-height: 110dvh;
   margin-right: 3.5em;
-  padding: 1em 1em 5.5em 1em;
-  background-color: rgba(154, 199, 224, 0.40);
+  padding: 1em 1em 12.5em 1em;
+  background: rgba(78, 110, 67, 0.40);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border-radius: 4em;
@@ -596,8 +597,8 @@ div.book> p {
 }
 div.book > p.question {
   margin-inline-start: 23%;
-  background-color: #E1F4FA;
-  border: .1em solid #0474AC;
+  background-color: var(--beige, #FEFEF2);
+  border: .1em solid transparent;
   /* color: #0474AC; */
   border-radius: .75em .75em 0 .75em;
 }
@@ -610,8 +611,8 @@ div.book > p.question {
 }*/
 div.book > p.answer {
   margin-inline-end: 23%;
-  background-color: #D2F8CE;
-  border: .1em solid #2A540C;
+  background-color: #E1FEFF;
+  border: 1px solid transparent;
   /* color: #2A540C; */
   border-radius: 0 .75em .75em .75em;
 }
@@ -699,9 +700,9 @@ img.hb {
 }
 
 @keyframes leave {
-  0%{ transform: translateX(-15vw) translateY(7vh) scale(0.75); }
-  14%{ transform: translateX(-15vw) translateY(7vh) scale(0.75); }
-  55.29%{ transform: translateX(35vw) translateY(7vh) scale(0.75); }
+  0%{ transform: translateX(-15vw) translateY(13dvh) scale(0.75); }
+  14%{ transform: translateX(-15vw) translateY(13dvh) scale(0.75); }
+  55.29%{ transform: translateX(35vw) translateY(13dvh) scale(0.75); }
   55.30%{ transform: translateX(0) translateY(0) scale(1); }
   100%{ transform: translateX(0) translateY(0) scale(1); }
 }
