@@ -43,8 +43,26 @@ section#loader{
 body[data-state="loader"]>section#loader{
   display: flex;
 }
-body:not([data-state="loader"])>section#city{
+body[data-state="break"]>section#loader{
   display: flex;
+}
+
+body[data-state="loader"] img.illbeback{
+  display: none;
+}
+body[data-state="break"] img.illbeback{
+  display: block;
+  position: absolute;
+}
+
+/* body[data-state="loader"] div:has(div.book), body[data-state="break"] div:has(div.book){
+} */
+
+body:not([data-state="loader"])>section#city,body:not([data-state="break"])>section#city{
+  display: flex;
+}
+body[data-state="loader"] section#city>div:has(div.book){
+  display: none;
 }
   
 body[data-state="welcome"]>section>.neznaika{
@@ -87,6 +105,12 @@ body[data-state="welcome"] #city > div:has(div.book):before{
      -moz-animation: 2.55s normal 1.45s forwards 1 fadeinsign linear;
        -o-animation: 2.55s normal 1.45s forwards 1 fadeinsign linear;
           animation: 2.55s normal 1.45s forwards 1 fadeinsign linear;
+}
+body[data-state="break"] div.book{
+  animation: 1.75s normal forwards 1 fadingupchatbox linear;
+}
+body[data-state="break"] #city > div:has(div.book):before{
+  animation: 1.75s normal forwards 1 fadeawaysign linear;
 }
 body[data-state="goodbye"] div.book{
   animation: 1.75s normal forwards 1 fadingupchatbox linear;
@@ -649,6 +673,9 @@ img.hb {
   bottom: 0;
   left: 0;
 }
+.illbeback{
+  display: none;
+}
 
 @-webkit-keyframes fadein {
   0%{ opacity: 0 }
@@ -778,10 +805,10 @@ img.hb {
     line-height: 47px;
   }
   button#go {
-    font-size: 90px;
-    line-height: 120px;
-    padding: 60px 200px;
-    border-radius: 120px;
+    font-size: 30px;
+    line-height: 45px;
+    padding: 30px 100px;
+    border-radius: 45px;
   }
 }
 @media screen and (min-width: 1441px) and (max-width: 1535px) {

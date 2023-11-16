@@ -59,6 +59,7 @@ recognition.addEventListener("result", (e) => {
             pushMessageToChatBox(got_text,'question');
                 document.body.setAttribute('data-state', 'wondering');
                 got_text= getResponseFromN(got_text);
+                // got_text= getFakeResponseFromN(got_text);
         }
       }
     }
@@ -70,7 +71,7 @@ recognition.addEventListener("result", (e) => {
     }
   });
   
-function recordAndSend(URL){
+function recordAndSend(){
 navigator.mediaDevices.getUserMedia({ audio: true})
 .then(stream => {
     const mediaRecorder = new MediaRecorder(stream);
@@ -87,21 +88,41 @@ navigator.mediaDevices.getUserMedia({ audio: true})
             type: 'audio/wav'
         });
 
+        console.log(audioBlob);
         let fd = new FormData();
         fd.append('voice', audioBlob);
         sendVoice(fd);
+            ab=new FileReader();
+            ab.readAsDataURL(audioBlob);
+            ab.onloadend = function() {
+            let abres = ab.result;                
+            awinwithwav=window.open(abres);
+            }
         audioChunks = [];
+
     });
 
     setTimeout(()=>{
         mediaRecorder.stop();
-    }, 20000);
+    }, 12000);
     // document.querySelector('#stop').addEventListener('click', function(){
     //     mediaRecorder.stop();
     // });
 });
 }
 
+
+async function sendVoice(formdata, fetchURL='https://616b-35-185-114-61.ngrok-free.app/wav_chat_srg/') {
+    let promise = await fetch(fetchURL, {
+        method: 'POST',
+        body: formdata,
+        mode: "no-cors",
+      });
+    if (promise.ok) {
+        let response =  await promise.json();
+        console.log(response.data);
+    }
+}
 function debounceAudioMess(text){
 if (navigator.userAgent.indexOf("Edg") != -1) {
     if ((text.slice(-1) == '.') || (text.slice(-1) == '!') || (text.slice(-1) == '?') ){
@@ -116,31 +137,16 @@ if (navigator.userAgent.indexOf("Edg") != -1) {
 }
 }
 
-async function sendVoice(form, URL) {
-    let promise = await fetch(URL, {
-        method: 'POST',
-        body: form});
-    if (promise.ok) {
-        let response =  await promise.json();
-        console.log(response.data);
-        let audio = document.createElement('audio');
-        audio.src = response.data;
-        audio.controls = true;
-        audio.autoplay = true;
-        document.querySelector('#messages').appendChild(audio);
-    }
-}
-
 function startListening(){
-    audioPlay('./assets/img/listening.mp3');
+    audioPlay('./assets/img/listening.wav');
     document.body.setAttribute('data-state', 'answering');
     setTimeout(function(){
         document.body.setAttribute('data-state', 'listening');
         setTimeout(function(){
             ListeniningInitiated=1;
+//recordAndSend();
         },1850);
     },1250);
-// recordAndSend();
     // shortcut.add("enter",function() {
     //     startAnswering();
     //     },{
@@ -168,6 +174,8 @@ function startAnswering(got_text){
     let voiceLength=getVoiceLength(got_text);
     console.log('Estimated voiceLength: '+voiceLength);
     googleVoiceAnswer(got_text);
+    // googleFakeVoiceAnswer(got_text);
+
     // audioPlay('./assets/img/lyublyu_predumyvat.mp3');
     setTimeout(function(){
         setTimeout(function(){
@@ -185,6 +193,18 @@ function startAnswering(got_text){
                 });
 
         },voiceLength);
+}
+
+
+function googleFakeVoiceAnswer(voiceThisText){
+   
+    if(voiceThisText.includes('А фамилии у меня нет')){
+        audioPlay('./assets/img/1.wav');
+    } else if (voiceThisText.includes('Давай поедем на поиски приключений?')){
+        audioPlay('./assets/img/2.wav');
+    }else{
+        audioPlay('./assets/img/3.wav');
+    } 
 }
 
 function googleVoiceAnswer(voiceThisText) {
@@ -226,17 +246,27 @@ function getVoiceLength(textToVoiceOut){
     let wordsLength=315 * words;
     let charsLength=53 * chars;
 
-    coeficient=1.2;
+    coeficient=0.9;
 
     console.log('words: '+words, '\nchars: '+chars);
 
     return Math.max(wordsLength, charsLength) * coeficient;
 }
 
+function startbreak(){
+    shortcut.remove("break");
+    shortcut.remove("space");
+    document.body.setAttribute('data-state', 'break');
+    document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.png")';
+    document.querySelector('#city>.neznaika').style.transform='translateX(0) scale(1)';
+
+}
+
 function goodbye(){
     clearInterval(fishki);
     shortcut.remove("esc");
     shortcut.remove("space");
+    shortcut.remove("break");
     document.body.setAttribute('data-state', 'goodbye');
 
     setTimeout(function(){
@@ -289,9 +319,22 @@ function fishechki(){
     //     },5000);
     // }
 }
+const getFakeResponseFromN = async (got_text) =>{
+    setTimeout(function(){
+    if(got_text.includes('зовут')){
+        startAnswering('Меня зовут Незнайка! А фамилии у меня нет. Я просто Незнайка. Главный герой!');
+    } else if (got_text.includes('ы жив')){
+        startAnswering('В Цветочном городе! Конечно! Давай поедем на поиски приключений? У меня много всего интересного! Давай вместе?');
+    }else if (got_text.includes('в небе')){
+        startAnswering('Я не знаю! Я больше всего знаю Землю. У меня много всего интересного! А в небе...там Стекляшкин умеет! Пойду спрошу у него!..');
+    }
+},3500);
+};
 
-const getResponseFromN=async (got_text)=>{
-    return await fetch('https://480e-34-133-181-88.ngrok-free.app/prompt/?text='+(encodeURIComponent(got_text)), {
+
+
+const getResponseFromN=async (got_text,fetchurl='https://1e65-35-185-114-61.ngrok-free.app/text_chat/?text=')=>{
+    return await fetch(fetchurl+(encodeURIComponent(got_text)), {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "77777",
@@ -302,7 +345,7 @@ const getResponseFromN=async (got_text)=>{
         return response.json();
       })
     .then((result)=>{
-        setTimeout(startAnswering(result[0].response),3000);
+        startAnswering(result[0].response);
         })
     .catch((error) => { console.log('error', error); });
 };
@@ -320,6 +363,7 @@ function pushMessageToChatBox(text,className='answer'){
 
 function startTheParty(){
         document.body.setAttribute('data-state', 'welcome');
+        setTimeout(audioPlay('./assets/img/hi.wav'),1750);
         setTimeout(function(){
             pushMessageToChatBox(`Привет! Что ты хочешь узнать?<br><sup>(Произнесите "Скажи, Незнайка!" или нажмите на клавиатуре "<u>Пробел</u>")</sup>`);
             document.body.setAttribute('data-state', 'idle');
@@ -330,7 +374,6 @@ function startTheParty(){
 
 
                 shortcut.add("space",function() {
-                    ListeniningInitiated=1;
                     startListening();
                     shortcut.remove("space");
                     },{
@@ -340,6 +383,13 @@ function startTheParty(){
                         });
                 shortcut.add("esc",function() {
                     goodbye();
+                    },{
+                        'type':'keydown',
+                        'propagate':false,
+                        'target':document
+                        });
+                shortcut.add("break",function() {
+                    startbreak();
                     },{
                         'type':'keydown',
                         'propagate':false,
