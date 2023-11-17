@@ -286,7 +286,7 @@ function goodbye(){
 }
 
 function fishechki(){
-// console.log('Креатив и фишечки)');
+console.log('Креатив и фишечки)');
     // if((((document.querySelector('section#listening')).style).display != 'flex') && (((document.querySelector('section#answering')).style).display != 'flex') && (((document.querySelector('section#goodbye')).style).display != 'flex') && (((document.querySelector('section#loader')).style).display != 'flex')){
         
     // if(! document.querySelector('section#idles>img.neznaika')){
