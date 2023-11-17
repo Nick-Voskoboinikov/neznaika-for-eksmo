@@ -288,7 +288,7 @@ function goodbye(){
 function fishechki(){
 console.log('Креатив и фишечки)');
     // if((((document.querySelector('section#listening')).style).display != 'flex') && (((document.querySelector('section#answering')).style).display != 'flex') && (((document.querySelector('section#goodbye')).style).display != 'flex') && (((document.querySelector('section#loader')).style).display != 'flex')){
-        
+        //document.body.getAttribute('data-state') != 'listening';
     // if(! document.querySelector('section#idles>img.neznaika')){
     //     let neznaikaCaster = document.createElement('img');
     //     neznaikaCaster.alt = 'Незнайка';
@@ -363,9 +363,9 @@ function pushMessageToChatBox(text,className='answer'){
 
 function startTheParty(){
         document.body.setAttribute('data-state', 'welcome');
-        setTimeout(audioPlay('./assets/img/hi.wav'),1750);
+        setTimeout(()=>{audioPlay('./assets/img/hi.wav')},2000);
         setTimeout(function(){
-            pushMessageToChatBox(`Привет! Что ты хочешь узнать?<br><sup>(Произнесите "Скажи, Незнайка!" или нажмите на клавиатуре "<u>Пробел</u>")</sup>`);
+            pushMessageToChatBox('Привет! Что ты хочешь узнать?');
             document.body.setAttribute('data-state', 'idle');
             recognition.start();
             fishki = setInterval(fishechki,65000); // todo!!!
