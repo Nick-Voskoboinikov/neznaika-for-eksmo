@@ -253,13 +253,56 @@ function getVoiceLength(textToVoiceOut){
     return Math.max(wordsLength, charsLength) * coeficient;
 }
 
+function stopbreak(){
+    shortcut.remove("break");
+    shortcut.add("space",function() {
+        startListening();
+        shortcut.remove("space");
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
+    shortcut.add("break",function() {
+        startbreak();
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
+            
+    document.querySelector('#city>.neznaika').style.transform= null;
+    document.body.setAttribute('data-state', 'welcome');
+    setTimeout(function(){
+        document.body.setAttribute('data-state', 'idle');
+    },3750);
+    fishki = setInterval(fishechki,65000);
+}
+
 function startbreak(){
+    clearInterval(fishki);
     shortcut.remove("break");
     shortcut.remove("space");
+    
+    shortcut.add("break",function() {
+        stopbreak();
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
     document.body.setAttribute('data-state', 'break');
-    document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.png")';
-    document.querySelector('#city>.neznaika').style.transform='translateX(0) scale(1)';
 
+    setTimeout(function(){
+        document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.png")';
+        document.querySelector('#city>.neznaika').style.transform='translateX(0) scale(1)';
+        setTimeout(function(){
+            document.body.setAttribute('data-state', 'inbreak');
+            document.querySelector('#city').style.backgroundImage='';
+            document.querySelector('#city>.neznaika').style.transform='translateX(-13dvw) translateX(11dvh) scale(0.75)';
+            document.querySelector('div.book').classList.remove('fading');
+        },5000);
+        },3500);
 }
 
 function goodbye(){
@@ -275,7 +318,7 @@ function goodbye(){
         setTimeout(function(){
             document.body.setAttribute('data-state', 'loader');
             document.querySelector('#city').style.backgroundImage='';
-            document.querySelector('#city>.neznaika').style.transform='translateX(-18vw) scale(0.75)';
+            document.querySelector('#city>.neznaika').style.transform='translateX(-13dvw) translateX(11dvh) scale(0.75)';
             document.querySelector('div.book').classList.remove('fading');
             setTimeout(function(){
                 window.location.reload(true);
@@ -287,38 +330,15 @@ function goodbye(){
 
 function fishechki(){
 console.log('Креатив и фишечки)');
-    // if((((document.querySelector('section#listening')).style).display != 'flex') && (((document.querySelector('section#answering')).style).display != 'flex') && (((document.querySelector('section#goodbye')).style).display != 'flex') && (((document.querySelector('section#loader')).style).display != 'flex')){
-        //document.body.getAttribute('data-state') != 'listening';
-    // if(! document.querySelector('section#idles>img.neznaika')){
-    //     let neznaikaCaster = document.createElement('img');
-    //     neznaikaCaster.alt = 'Незнайка';
-    //     neznaikaCaster.title = 'Незнайка';
-    //     neznaikaCaster.classList.add('neznaika');
-    //     neznaikaCaster.src = './assets/img/cake_magician.gif';
-    //     (document.querySelector('section#idles')).append(neznaikaCaster);
-    //     let happybirthday = document.createElement('img');
-    //     happybirthday.alt = 'С днём рожения, Николай Носов!';
-    //     happybirthday.title = 'С днём рожения, Николай Носов!';
-    //     happybirthday.id = 'happy_birthday';
-    //     happybirthday.classList.add('hb');
-    //     happybirthday.src = './assets/img/hb.svg';
-    //     (document.querySelector('section#idles')).append(happybirthday);
-    // } else {
-    //     document.querySelector('#idles > img.neznaika').src = './assets/img/cake_magician.gif';
-    //     document.querySelector('#happy_birthday').classList.add('hb');        
-    // }
-
-    //     hideAllSections();
-    //     document.querySelector('section#idles').style.display='flex';
-
-    //     window.setTimeout(function(){
-    //         hideAllSections();
-    //         document.querySelector('#idles > img.neznaika').src = '';
-    //         document.querySelector('#happy_birthday').classList.remove('hb');  
-    //         (document.querySelector('section#idle')).style.display='flex';
-    //     },5000);
-    // }
+if(document.body.getAttribute('data-state') == 'idle'){
+    const possibleValues = [`butterflies`,`cake`];
+    const coinflip = (max) => {return Math.floor(Math.random() * max);}
+    const random1 = coinflip(possibleValues.length);   
+    document.body.setAttribute('data-state', possibleValues[random1]);
+    setTimeout(()=>{document.body.setAttribute('data-state','idle')},4500);
 }
+}
+
 const getFakeResponseFromN = async (got_text) =>{
     setTimeout(function(){
     if(got_text.includes('зовут')){
@@ -362,43 +382,40 @@ function pushMessageToChatBox(text,className='answer'){
 }
 
 function startTheParty(){
+    shortcut.add("space",function() {
+        startListening();
+        shortcut.remove("space");
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
+    shortcut.add("esc",function() {
+        goodbye();
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
+    shortcut.add("break",function() {
+        startbreak();
+        },{
+            'type':'keydown',
+            'propagate':false,
+            'target':document
+            });
+
         document.body.setAttribute('data-state', 'welcome');
         setTimeout(()=>{audioPlay('./assets/img/hi.wav')},2000);
         setTimeout(function(){
             pushMessageToChatBox('Привет! Что ты хочешь узнать?');
             document.body.setAttribute('data-state', 'idle');
             recognition.start();
-            fishki = setInterval(fishechki,65000); // todo!!!
     
-            setTimeout(function(){
-
-
-                shortcut.add("space",function() {
-                    startListening();
-                    shortcut.remove("space");
-                    },{
-                        'type':'keydown',
-                        'propagate':false,
-                        'target':document
-                        });
-                shortcut.add("esc",function() {
-                    goodbye();
-                    },{
-                        'type':'keydown',
-                        'propagate':false,
-                        'target':document
-                        });
-                shortcut.add("break",function() {
-                    startbreak();
-                    },{
-                        'type':'keydown',
-                        'propagate':false,
-                        'target':document
-                        });
-            },5000);
         },3750);
 }
 
 (document.querySelector('button#go')).addEventListener('click',()=>{
     startTheParty();
+    fishki = setInterval(fishechki,65000);
 });

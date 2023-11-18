@@ -43,20 +43,29 @@ section#loader{
 body[data-state="loader"]>section#loader{
   display: flex;
 }
-body[data-state="break"]>section#loader{
+body[data-state="inbreak"]>section#loader{
   display: flex;
 }
 
 body[data-state="loader"] img.illbeback{
   display: none;
 }
-body[data-state="break"] img.illbeback{
+body[data-state="inbreak"] img.illbeback{
   display: block;
   position: absolute;
+  bottom: 50dvh;
+  left: 25dvw;
+}
+body[data-state="inbreak"] div.intro>div.titlewrapper {
+    display: none;
+}
+body[data-state="inbreak"] #go{
+    display: none;
+}
+body[data-state="inbreak"] section#city>div:has(div.book){
+  display: none;
 }
 
-/* body[data-state="loader"] div:has(div.book), body[data-state="break"] div:has(div.book){
-} */
 
 body:not([data-state="loader"])>section#city,body:not([data-state="break"])>section#city{
   display: flex;
@@ -74,6 +83,9 @@ body[data-state="idle"]>section>.neznaika{
 body[data-state="cake"]>section>.neznaika{
   background-image: url('../img/cake_magician.gif');
 }
+body[data-state="butterflies"]>section>.neznaika{
+  background-image: url('../img/butterflies.gif');
+}
 body[data-state="listening"]>section>.neznaika{
   background-image: url('../img/listening.gif');
 }
@@ -87,6 +99,10 @@ body[data-state="wondering"]>section>.neznaika{
   background-image: url('../img/wondering.gif');
 }
 body[data-state="goodbye"]>section>.neznaika{
+  background-image: url('../img/goodbye.gif');
+  animation: 6s 1 normal ease-out .5s leave;
+}
+body[data-state="break"]>section>.neznaika{
   background-image: url('../img/goodbye.gif');
   animation: 6s 1 normal ease-out .5s leave;
 }
