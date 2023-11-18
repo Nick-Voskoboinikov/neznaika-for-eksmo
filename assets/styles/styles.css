@@ -9,10 +9,6 @@
   * {
   box-sizing: border-box;
   }
-@font-face {
-    font-family: "Racama-Regular";
-    src: ('../fonts/Racama.otf') format('opentype');
-    }
 
 
 html {
@@ -55,6 +51,7 @@ body[data-state="inbreak"] img.illbeback{
   position: absolute;
   bottom: 50dvh;
   left: 25dvw;
+  width: 50dvw;
 }
 body[data-state="inbreak"] div.intro>div.titlewrapper {
     display: none;
@@ -82,6 +79,10 @@ body[data-state="idle"]>section>.neznaika{
 }
 body[data-state="cake"]>section>.neznaika{
   background-image: url('../img/cake_magician.gif');
+}
+body[data-state="ice-cream"]>section#city>div.neznaika{
+  background-image: url('../img/ice-cream.gif');
+  transform: translateX(4dvw) translateY(8dvh) scale(0.85);
 }
 body[data-state="butterflies"]>section>.neznaika{
   background-image: url('../img/butterflies.gif');
@@ -499,7 +500,7 @@ section#city > .neznaika {
   background-clip: border-box;
 }
 body>section#city > .neznaika{
-  transform: translateX(-13dvw) translateY(11dvh) scale(0.75);
+  transform: translateX(-9dvw) translateY(8dvh) scale(0.85);
 }
 
 div.intro{
@@ -563,6 +564,11 @@ button#go {
   border-radius: 120px;
   cursor: pointer;
 }
+button#go:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid transparent;
+}
 button#go:hover,button#go:active {
   background-color: #950000;
 }
@@ -604,11 +610,11 @@ section#city>div>div.book{
   min-height: 110dvh;
   max-height: 110dvh;
   margin-right: 3.9dvw;
-  padding: 1em 1em 12.5em 1em;
+  padding: 1em 1em 17em 1em;
   background: rgba(78, 110, 67, 0.40);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 4em;
   overflow-y: auto;
   /* 
@@ -620,18 +626,19 @@ section#city>div>div.book{
 }
 div.book> p {
   display: inline-block;
-  max-width: 25.65dvw;
-  font-family: Racama;
+  max-width: 34.65dvw;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 70px;
   color: black;
-  line-height: 120px;
+  line-height: 90px;
   padding: 2dvh 2dvw;
   margin: 1dvh 1dvw;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 8px 0px rgba(0, 0, 0, 0.30);
 }
 div.book > p.question {
-  margin-inline-start: 16dvw;
+  margin-inline-start: 7dvw;
   background-color: var(--beige, #FEFEF2);
   border: .1em solid transparent;
   /* color: #0474AC; */
@@ -645,7 +652,7 @@ div.book > p.question {
   height: 120px;
 }*/
 div.book > p.answer {
-  margin-inline-end: 16dvw;
+  margin-inline-end: 7dvw;
   background-color: #E1FEFF;
   border: 1px solid transparent;
   /* color: #2A540C; */
@@ -675,7 +682,7 @@ img.hb {
  .logo{
   position: relative;
   z-index:3;
-  margin: 1.85dvh 1.04dvw;
+  margin: 3.85dvh 2.54dvw;
   width: 16.67dvw;
   cursor: pointer;
 }
@@ -731,15 +738,15 @@ img.hb {
 @keyframes baloonflight {
   0%{ transform: translate(0, 0); background-size: 35%; }
   25%{ transform: translate(0, -50px); background-size: 38%; }
-  50%{ transform: translate(0, 50px); background-size: 41%; }
-  75%{ transform: translate(-25px, 50px); background-size: 45%;}
-  85%{ transform: translate(50px, -50px); background-size: 38%; }
+  50%{ transform: translate(0, 50px); background-size: 39%; }
+  75%{ transform: translate(-25px, 50px); background-size: 40%;}
+  85%{ transform: translate(50px, -50px); background-size: 35%; }
   100%{ transform: translate(0, 0); background-size: 35%; }
 }
 
 @keyframes leave {
-  0%{ transform: translateX(-13dvw) translateY(11dvh) scale(0.75); }
-  14%{ transform: translateX(-13dvw) translateY(11dvh) scale(0.75); }
+  0%{ transform: translateX(-9dvw) translateY(8dvh) scale(0.85); }
+  14%{ transform: translateX(-9dvw) translateY(8dvh) scale(0.85); }
   55.29%{ transform: translateX(35vw) translateY(11dvh) scale(0.75); }
   55.30%{ transform: translateX(0) translateY(0) scale(1); }
   100%{ transform: translateX(0) translateY(0) scale(1); }
@@ -756,6 +763,7 @@ img.hb {
     }
     button#go {
       font-size: 90px;
+      font-family: 'Inter';
       line-height: 120px;
       padding: 60px 200px;
       border-radius: 120px;
