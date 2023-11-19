@@ -106,7 +106,10 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 });
 }
 
+
 async function sendVoice(formdata, fetchURL='https://127.0.0.1') { // for 🤌❓
+
+
     let promise = await fetch(fetchURL+'/chat/', {
         method: 'POST',
         body: formdata
