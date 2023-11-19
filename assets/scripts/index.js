@@ -116,6 +116,8 @@ async function sendVoice(formdata, fetchURL='https://127.0.0.1') { // for ü§å‚ù
       });
     if (promise.ok) {
         let response =  await promise.json();
+        console.log(response);
+        onGetResponse(response.data);
         console.log(response.data);
     }
 }
@@ -287,6 +289,7 @@ if(jsonstring.length == 0){
              }
 };
 }
+console.log(jsonstring);
 // let myObj = JSON.parse(jsonstring);
 
 // console.log(jsonstring['response']);
