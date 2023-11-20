@@ -682,9 +682,13 @@ img.hb {
  .logo{
   position: relative;
   z-index:3;
-  margin: 3.85dvh 2.54dvw;
-  width: 16.67dvw;
+  margin: 4.35dvh 2.34dvw;
+  width: 10.72dvw;
   cursor: pointer;
+}
+.logo>img{
+  width: 100%;
+  margin-bottom: 1.07dvh;
 }
 .logowrapper{
   position: absolute;

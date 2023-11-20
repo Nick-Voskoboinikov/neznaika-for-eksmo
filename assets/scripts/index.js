@@ -110,7 +110,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 }
 
 
-async function sendVoice(formdata, fetchURL='https://3edd-35-230-91-69.ngrok-free.app/') {
+async function sendVoice(formdata, fetchURL='https://ee29-94-29-16-183.ngrok-free.app/') {
 //async function sendVoice(formdata, fetchURL='./') {  // for requests
 try {
     let promise = await fetch(fetchURL+'chat/', {
@@ -218,7 +218,7 @@ function getVoiceLength(textToVoiceOut){
 }
 
 function stopbreak(){
-    shortcut.remove("break");
+    shortcut.remove("p");
     shortcut.add("space",function() {
         startListening();
         shortcut.remove("space");
@@ -227,7 +227,7 @@ function stopbreak(){
             'propagate':false,
             'target':document
             });
-    shortcut.add("break",function() {
+    shortcut.add("p",function() {
         startbreak();
         },{
             'type':'keydown',
@@ -245,10 +245,10 @@ function stopbreak(){
 
 function startbreak(){
     clearInterval(fishki);
-    shortcut.remove("break");
+    shortcut.remove("p");
     shortcut.remove("space");
     
-    shortcut.add("break",function() {
+    shortcut.add("p",function() {
         stopbreak();
         },{
             'type':'keydown',
@@ -273,7 +273,7 @@ function goodbye(){
     clearInterval(fishki);
     shortcut.remove("esc");
     shortcut.remove("space");
-    shortcut.remove("break");
+    shortcut.remove("p");
     document.body.setAttribute('data-state', 'goodbye');
 
     setTimeout(function(){
@@ -412,7 +412,7 @@ function startTheParty(){
             'propagate':false,
             'target':document
             });
-    shortcut.add("break",function() {
+    shortcut.add("p",function() {
         startbreak();
         },{
             'type':'keydown',
