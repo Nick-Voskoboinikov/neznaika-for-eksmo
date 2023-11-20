@@ -110,8 +110,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 }
 
 
-async function sendVoice(formdata, fetchURL='https://ee29-94-29-16-183.ngrok-free.app/') {
-//async function sendVoice(formdata, fetchURL='./') {  // for requests
+async function sendVoice(formdata, fetchURL='./') {
 try {
     let promise = await fetch(fetchURL+'chat/', {
         method: 'POST',
