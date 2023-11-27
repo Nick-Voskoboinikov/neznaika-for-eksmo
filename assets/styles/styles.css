@@ -1,5 +1,5 @@
 @font-face{
-  font-family: NTSomic;
+  font-family: 'NT Somic';
   src: url('../fonts/NTSomic-Regular.woff2'), url('../fonts/NTSomic-Semibold.woff2') format('woff2');
 }
   
@@ -637,7 +637,7 @@ div.book> p {
   display: inline-block;
   max-width: 34.65dvw;
   font-family: 'Inter';
-  font-family: 'NTSomic';
+  font-family: 'NT Somic';
   font-style: normal;
   font-weight: 400;
   font-size: 70px;
