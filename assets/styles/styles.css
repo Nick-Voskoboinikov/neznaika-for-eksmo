@@ -1,4 +1,9 @@
-:root {
+@font-face{
+  font-family: NTSomic;
+  src: url('../fonts/NTSomic-Regular.woff2'), url('../fonts/NTSomic-Semibold.woff2') format('woff2');
+}
+  
+  :root {
     --color--red: #BD1622;
     --color-white: #FFFFFF;
     --color-green: #28BF0F;
@@ -633,6 +638,7 @@ div.book> p {
   display: inline-block;
   max-width: 34.65dvw;
   font-family: 'Inter';
+  font-family: 'NTSomic';
   font-style: normal;
   font-weight: 400;
   font-size: 70px;
