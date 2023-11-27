@@ -49,7 +49,7 @@ recognition.addEventListener("result", (e) => {
         startListening();
         } else if (text.includes("Улетай незнайка") || text.includes("улетай Незнайка") || (text.includes("Улетай не знай ка")) || (text.includes("Не знай ка улетай")) || (text.includes("Незнайка улетай")) || (text.includes("Незнайка, улетай")) || (text.includes("Улетай, Незнайка")) || text.includes("улетай незнайка") || text.includes("незнайка улетай") || text.includes("улетаю незнайка") || text.includes("улетаю Незнайка") || text.includes("незнайка улетаю")) {
             goodbye();
-        } else if (text.includes("Незнайка, отдыхай") || text.includes("Незнайка отдыхай") || (text.includes("Отдыхай не знай ка")) || (text.includes("Не знай ка отдыхай")) || (text.includes("незнайка отдыхай")) || (text.includes("незнайка, отдыхай")) || (text.includes("Отдыхай, Незнайка")) || text.includes("улетай незнайка") || text.includes("незнайка улетай") || text.includes("улетаю незнайка") || text.includes("отдыхаю Незнайка") || text.includes("незнайка отдыхаю")) {
+        } else if (text.includes("Незнайка, отдыхай") || text.includes("Незнайка отдыхай") || (text.includes("Отдыхай не знай ка")) || (text.includes("Не знай ка отдыхай")) || (text.includes("незнайка отдыхай")) || (text.includes("незнайка, отдыхай")) || (text.includes("Отдыхай, Незнайка")) || text.includes("отдыхаю Незнайка") || text.includes("незнайка отдыхаю")) {
             startbreak();
         } else if ((/^[Сс]топ[\s\.\!]/g).test(text)) {
             muteAll();
@@ -248,6 +248,10 @@ function stopbreak(){
     document.querySelector('#city>.neznaika').style.transform= null;
     document.body.setAttribute('data-state', 'welcome');
     setTimeout(function(){
+        ListeniningInitiated=0;
+        recognitionPaused=0;
+        recognition.start();},1200);
+    setTimeout(function(){
         document.body.setAttribute('data-state', 'idle');
     },3750);
     fishki = setInterval(fishes,31500);
@@ -313,7 +317,7 @@ function goodbye(){
 function fishes(){
 console.log('Креатив и фишечки)');
 if(document.body.getAttribute('data-state') == 'idle'){
-    let lastAnsweredTime=(Math.floor((new Date()).valueOf()/1000)) - lastAnsweredTime;
+    let lastAnsweredTime=(Math.floor((new Date()).valueOf()/1000)) - lastAnswerTime;
     if(lastAnsweredTime > 30){ // если последний ответ больше 30 секунд назад
     // const possibleValues = [`butterflies`,`ice-cream`,`cake`,`watermelon`];
     const possibleValues = [`butterflies`,`ice-cream`];
@@ -323,6 +327,10 @@ if(document.body.getAttribute('data-state') == 'idle'){
     setTimeout(()=>{document.body.setAttribute('data-state','idle')},4500);
     }
 }
+purgechat();
+}
+function purgechat(){
+
 }
 
 function onGetResponse(jsonstring="",status='answering'){

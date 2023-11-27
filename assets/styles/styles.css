@@ -7,7 +7,7 @@
     --color--red: #BD1622;
     --color-white: #FFFFFF;
     --color-green: #28BF0F;
-    --color-beige: #FEFEF2;
+    --color-beige: #D8FFBE;
   }
 
   * {
@@ -37,7 +37,7 @@ section {
   background-clip: border-box;
 }
 section#loader{
-  background-image: url('../img/bg1.png');
+  background-image: url('../img/bg1.svg');
   background-position: bottom left;
 }
 body[data-state="loader"]>section#loader{
@@ -115,7 +115,7 @@ body[data-state="break"]>section>.neznaika{
   animation: 6s 1 normal ease-out .5s leave;
 }
 
-body[data-state="break"] #turbosnail,body[data-state="welcome"] #turbosnail,body[data-state="loader"] #turbosnail{
+body[data-state="break"] #turbosnail,body[data-state="welcome"] #turbosnail,body[data-state="loader"] #turbosnail,body[data-state="inbreak"] #turbosnail{
   display: none;
 }
 
@@ -155,7 +155,7 @@ body[data-state="goodbye"] #city > div:has(div.book):before{
     overflow: hidden;
     font-size: 62.5%;
     background-color: skyblue;
-    background-image: url('../img/bg.png');
+    background-image: url('../img/bg.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-clip: border-box;
@@ -589,7 +589,7 @@ section#city>div:has(div.book){
   flex-direction: column;
   justify-content: flex-end;
   right: 0;
-  width: 41.67dvw;
+  width: 36.45dvw;
   height: 100%;
 }
 section#city>div:has(div.book):before{
@@ -619,10 +619,9 @@ section#city>div>div.book{
   top: 5dvh;
   min-height: 110dvh;
   max-height: 110dvh;
-  margin-right: 3.9dvw;
-  padding: 1em 1em 17em 1em;
-  background: rgba(35, 23, 9, 0.40);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-right: 2.34dvw;
+  padding: 0 0 17em 0;
+  background: rgba(95, 120, 102, 0.10);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 4em;
@@ -645,12 +644,12 @@ div.book> p {
   color: black;
   line-height: 90px;
   padding: 2dvh 2dvw;
-  margin: 1dvh 1dvw;
+  margin: .5dvh 1px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 0px 8px 0px rgba(0, 0, 0, 0.30);
 }
 div.book > p.question {
   margin-inline-start: 7dvw;
-  background-color: var(--beige, #FEFEF2);
+  background-color: var(--beige, #D8FFBE);
   border: .1em solid transparent;
   /* color: #0474AC; */
   border-radius: .75em .75em 0 .75em;
@@ -664,7 +663,7 @@ div.book > p.question {
 }*/
 div.book > p.answer {
   margin-inline-end: 7dvw;
-  background-color: #E1FEFF;
+  background-color: #D5FFFE;
   border: 1px solid transparent;
   /* color: #2A540C; */
   border-radius: 0 .75em .75em .75em;
@@ -700,7 +699,7 @@ img.hb {
 .logo>img{
   width: 100%;
   margin-bottom: 1.07dvh;
-  filter: drop-shadow(5px 5px 5px rgb(0 0 0 / 0.7));
+  /* filter: drop-shadow(5px 5px 5px rgb(0 0 0 / 0.7)); */
 }
 .logowrapper{
   position: absolute;
@@ -714,7 +713,7 @@ img.hb {
 position: absolute;
 display: block;
 z-index: 0;
-background-image: url('../img/snail.svg');
+background-image: url('../img/snail.gif');
 width: 6.82dvw;
 height: 7.41dvh;
 background-repeat: no-repeat;
@@ -722,6 +721,20 @@ background-size: contain;
 transform: translateX(-52dvw);
 animation: 33s snailrun 2.5s infinite linear both;
 bottom: 12.48dvh;
+}
+
+
+.daisy {
+  position: absolute;
+  display: block;
+  z-index: 0;
+  background-image: url('../img/daisy.gif');
+  width: 7.82dvw;
+  height: 18.41dvh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 3dvw;
+  bottom: 37.48dvh;
 }
 
 @-webkit-keyframes fadein {
@@ -764,11 +777,19 @@ bottom: 12.48dvh;
 }
 
 
+@-webkit-keyframes baloonflight {
+  0%{ transform: translate(0, 0); background-size: 35%; }
+  25%{ transform: translate(0, -50px); background-size: 38%; }
+  50%{ transform: translate(0, 12px); background-size: 39%; }
+  75%{ transform: translate(-25px, 12px); background-size: 40%;}
+  85%{ transform: translate(50px, -50px); background-size: 35%; }
+  100%{ transform: translate(0, 0); background-size: 35%; }
+}
 @keyframes baloonflight {
   0%{ transform: translate(0, 0); background-size: 35%; }
   25%{ transform: translate(0, -50px); background-size: 38%; }
-  50%{ transform: translate(0, 50px); background-size: 39%; }
-  75%{ transform: translate(-25px, 50px); background-size: 40%;}
+  50%{ transform: translate(0, 12px); background-size: 39%; }
+  75%{ transform: translate(-25px, 12px); background-size: 40%;}
   85%{ transform: translate(50px, -50px); background-size: 35%; }
   100%{ transform: translate(0, 0); background-size: 35%; }
 }
@@ -840,15 +861,19 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 1537px) and (max-width: 2559px) {
+  section#city>div>div.book{
+    padding: 1em 1em 5em 1em;
+    }
   div.book> p {
     font-size: clamp(48px,52px,56px);
     line-height: clamp(47px,66px,86px);
   }
+  
   button#go {
-    font-size: 90px clamp(47px,66px,86px);
-    line-height: clamp(75px,98px,120px);
-    padding: clamp(38px,66px,60px) clamp(125px,162px,200px);
-    border-radius: clamp(75px,98px,120px);
+    font-size: clamp(36px,42px,48px);
+    line-height: clamp(38px,76px,98px);
+    padding: clamp(24px,24px,60px) clamp(94px,100px,178px);
+    border-radius: clamp(38px,75px,120px);
   }
 }
 
@@ -857,6 +882,9 @@ bottom: 12.48dvh;
   div.btnwrapper{
   height: 14.42dvh;
   }
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 48px;
     line-height: 47px;
@@ -869,6 +897,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 1441px) and (max-width: 1535px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.btnwrapper{
   height: 20dvh;
   }
@@ -886,6 +917,9 @@ bottom: 12.48dvh;
 
 @media screen and (width: 1440px) {
 /* @media screen and (width: 1440px) and (height: 1080px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.btnwrapper{
   height: 20dvh;
   }
@@ -901,6 +935,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 1281px) and (max-width: 1439px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 32px;
     line-height: clamp(40px,41px,42px);
@@ -914,6 +951,9 @@ bottom: 12.48dvh;
 }
 
 @media screen and (width: 1280px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
 /* @media screen and (width: 1280px) and (height: 960px) { */
   div.book> p {
     font-size: 32px;
@@ -927,6 +967,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 1201px) and (max-width: 1279px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
     div.book> p {
       font-size: 32px;
       line-height: 40px;
@@ -941,6 +984,9 @@ bottom: 12.48dvh;
 
 @media screen and (width: 1200px) {
 /* @media screen and (width: 1200px) and (height: 900px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
     div.book> p {
       font-size: 32px;
       line-height: 40px;
@@ -954,6 +1000,9 @@ bottom: 12.48dvh;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1199px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: clamp(22px,26px,32px);
     line-height: clamp(32px,36px,40px);
@@ -969,6 +1018,9 @@ bottom: 12.48dvh;
 
 @media screen and (width: 1024px) {
  /* @media screen and (width: 1024px) and (height: 768px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 22px;
     line-height: 32px;
@@ -981,6 +1033,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: clamp(16px,20px,22px);
     line-height: 1rem;
@@ -995,6 +1050,9 @@ bottom: 12.48dvh;
 
 @media screen and (width: 768px) {
 /* @media screen and (width: 768px) and (height: 576px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 16px;
     line-height: 32px;
@@ -1007,6 +1065,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 426px) and (max-width: 767px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: clamp(9px,12px,16px);
     line-height: clamp(14px,20px,32px);
@@ -1021,6 +1082,9 @@ bottom: 12.48dvh;
 
 @media screen and (width: 425px) {
 /* @media screen and (width: 425px) and (height: 318px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 9px;
     line-height: 14px;
@@ -1033,6 +1097,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 376px) and (max-width: 424px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 9px;
     line-height: clamp(12px,14px,14px);
@@ -1047,6 +1114,9 @@ bottom: 12.48dvh;
 
 @media screen and (max-width: 375px) {
 /* @media screen and (width: 375px) and (height: 281px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 9px;
     line-height: 12px;
@@ -1059,6 +1129,9 @@ bottom: 12.48dvh;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 375px) {
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: clamp(7px,8px,9px);
     line-height: clamp(10px,11px,12px);
@@ -1072,6 +1145,9 @@ bottom: 12.48dvh;
 }
 @media screen and (width: 320px) {
 /* @media screen and (width: 320px) and (height: 240px) { */
+  section#city>div>div.book{
+    padding: 1em 1em 4em 1em;
+    }
   div.book> p {
     font-size: 7px;
     line-height: 10px;
