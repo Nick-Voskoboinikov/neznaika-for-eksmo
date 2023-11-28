@@ -488,3 +488,10 @@ function startTheParty(){
 });
 
 document.querySelector('#go').focus();
+
+
+randomDaises = setInterval(randomDaisies,20000);
+
+function randomDaisies() {
+ return 0;
+}
