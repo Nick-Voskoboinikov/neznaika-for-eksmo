@@ -72,6 +72,7 @@ body[data-state="inbreak"] img.breakpaint{
   bottom: 11dvh;
   left: 50dvw;
   width: 13dvw;
+  z-index: 1;
 }
 body[data-state="inbreak"] img.breaktea{
   display: block;
@@ -79,6 +80,7 @@ body[data-state="inbreak"] img.breaktea{
   bottom: 12dvh;
   left: 25dvw;
   width: 21dvw;
+  z-index: 1;
 }
 body[data-state="inbreak"] div.intro>div.titlewrapper {
     display: none;
@@ -758,7 +760,7 @@ background-repeat: no-repeat;
 background-size: contain;
 transform: translateX(-52dvw);
 animation: 33s snailrun 2.5s infinite linear both;
-bottom: 12.48dvh;
+bottom: 15dvh;
 }
 
 

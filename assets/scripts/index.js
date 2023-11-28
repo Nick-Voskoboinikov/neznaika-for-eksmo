@@ -281,7 +281,7 @@ function startbreak(){
     document.body.setAttribute('data-state', 'break');
 
     setTimeout(function(){
-        document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.png")';
+        document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.svg")';
         document.querySelector('#city>.neznaika').style.transform='translateX(0) scale(1)';
         setTimeout(function(){
             document.body.setAttribute('data-state', 'inbreak');
