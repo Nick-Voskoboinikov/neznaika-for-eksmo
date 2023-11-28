@@ -50,12 +50,35 @@ body[data-state="inbreak"]>section#loader{
 body[data-state="loader"] img.illbeback{
   display: none;
 }
+body[data-state="loader"] img.breakpaint{
+  display: none;
+}
+body[data-state="loader"] img.breaktea{
+  display: none;
+}
+body[data-state="inbreak"] #loader::before{
+  display: none;
+}
 body[data-state="inbreak"] img.illbeback{
   display: block;
   position: absolute;
-  bottom: 50dvh;
+  bottom: 70dvh;
   left: 25dvw;
   width: 50dvw;
+}
+body[data-state="inbreak"] img.breakpaint{
+  display: block;
+  position: absolute;
+  bottom: 11dvh;
+  left: 50dvw;
+  width: 13dvw;
+}
+body[data-state="inbreak"] img.breaktea{
+  display: block;
+  position: absolute;
+  bottom: 12dvh;
+  left: 25dvw;
+  width: 21dvw;
 }
 body[data-state="inbreak"] div.intro>div.titlewrapper {
     display: none;
@@ -721,7 +744,7 @@ img.hb {
   bottom: 0;
   left: 0;
 }
-.illbeback{
+.illbeback,.breakpaint,.breaktea{
   display: none;
 }
 #turbosnail{
@@ -791,24 +814,24 @@ bottom: 12.48dvh;
   }
 
   @keyframes frogleap {
-    0%{ transform: translateX(98dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
-    50%{ transform: translateX(58dvw) translateY(8dvw) scaleX(-1) rotateX(-16deg) rotate(15deg);}
-    100%  { transform: translateX(-20dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(60deg); }
+    0%{ transform: translateX(98dvw) translateY(.1dvh) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
+    50%{ transform: translateX(58dvw) translateY(8dvh) scaleX(-1) rotateX(-16deg) rotate(15deg);}
+    100%  { transform: translateX(-20dvw) translateY(.1dvh) scaleX(-1) rotateX(-16deg) rotate(60deg); }
   }
   @-webkit-keyframes frogleap {
-    0%{ transform: translateX(98dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
-    50%{ transform: translateX(58dvw) translateY(8dvw) scaleX(-1) rotateX(-16deg) rotate(15deg);}
-    100%  { transform: translateX(-20dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(60deg); }
+    0%{ transform: translateX(98dvw) translateY(.1dvh) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
+    50%{ transform: translateX(58dvw) translateY(8dvh) scaleX(-1) rotateX(-16deg) rotate(15deg);}
+    100%  { transform: translateX(-20dvw) translateY(.1dvh) scaleX(-1) rotateX(-16deg) rotate(60deg); }
   }
   @keyframes frogleapback {
-    0%{ transform: translateX(-2dvw) translateY(.1dvw) rotate(1deg); }
-    50%{ transform: translateX(50dvw) translateY(8dvw) rotate(30deg);}
-    100%{ transform: translateX(102dvw) translateY(.1dvw) rotate(60deg); }
+    0%{ transform: translateX(-2dvw) translateY(.1dvh) rotate(1deg); }
+    50%{ transform: translateX(50dvw) translateY(8dvh) rotate(30deg);}
+    100%{ transform: translateX(102dvw) translateY(.1dvh) rotate(60deg); }
   }
   @-webkit-keyframes frogleapback {
-    0%{ transform: translateX(-2dvw) translateY(.1dvw) rotate(1deg);}
-    50%{ transform: translateX(50dvw) translateY(8dvw) rotate(30deg);}
-    100% { transform: translateX(102dvw) translateY(.1dvw) rotate(60deg);}
+    0%{ transform: translateX(-2dvw) translateY(.1dvh) rotate(1deg);}
+    50%{ transform: translateX(50dvw) translateY(8dvh) rotate(30deg);}
+    100% { transform: translateX(102dvw) translateY(.1dvh) rotate(60deg);}
   }
 
 @-webkit-keyframes fadein {
@@ -939,8 +962,8 @@ bottom: 12.48dvh;
     padding: 1em 1em 5em 1em;
     }
   div.book> p {
-    font-size: clamp(48px,52px,56px);
-    line-height: clamp(47px,66px,86px);
+    font-size: clamp(16px,36px,56px);
+    line-height: clamp(36px,48px,86px);
   }
   
   button#go {
@@ -1112,7 +1135,7 @@ bottom: 12.48dvh;
     }
   div.book> p {
     font-size: clamp(16px,20px,22px);
-    line-height: 1rem;
+    line-height: 1.4rem;
   }
   button#go {
     font-size: clamp(16px,20px,22px);

@@ -315,14 +315,16 @@ function goodbye(){
 }
 
 function randomDaisies() {
-const coinflip = (max) => {return Math.floor(Math.random() * max);}
-const randomCreatures = document.querySelector('#randomCreature').classList;
-const possibleCreatureValues = [`daisy1`,`daisy2`,`froggy`,`froggy1`];
-    if(randomCreatures.length==0){
-    const random1 = coinflip(possibleCreatureValues.length);
-    let creature=possibleCreatureValues[random1];
-    randomCreatures.toggle(creature);
-    setTimeout(function(){randomCreatures.remove(creature);},5000);
+    if((document.body.getAttribute('data-state') != 'loader')||(document.body.getAttribute('data-state') != 'welcome')||(document.body.getAttribute('data-state') != 'break')||(document.body.getAttribute('data-state') != 'inbreak')){
+    const coinflip = (max) => {return Math.floor(Math.random() * max);}
+    const randomCreatures = document.querySelector('#randomCreature').classList;
+    const possibleCreatureValues = [`daisy1`,`daisy2`,`froggy`,`froggy1`];
+        if(randomCreatures.length==0){
+            const random1 = coinflip(possibleCreatureValues.length);
+            let creature=possibleCreatureValues[random1];
+            randomCreatures.toggle(creature);
+            setTimeout(function(){randomCreatures.remove(creature);},5000);
+        }
     }
 }
 
