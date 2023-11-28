@@ -84,9 +84,21 @@ body[data-state="idle"]>section>.neznaika{
 body[data-state="idle"],body[data-state="cake"],body[data-state="ice-cream"],body[data-state="butterflies"],body[data-state="watermelon"],body[data-state="listening"],body[data-state="idk"],body[data-state="wondering"],body[data-state="answering"] {
   background-image: url('../img/blur.png');
 }
-background-image
+body:not(:is([data-state="idle"],[data-state="cake"],[data-state="ice-cream"],[data-state="butterflies"],[data-state="watermelon"],[data-state="listening"],[data-state="idk"],[data-state="wondering"],[data-state="answering"])) .daisy1{
+  display: none;
+}
+body:not(:is([data-state="idle"],[data-state="cake"],[data-state="ice-cream"],[data-state="butterflies"],[data-state="watermelon"],[data-state="listening"],[data-state="idk"],[data-state="wondering"],[data-state="answering"])) .daisy2{
+  display: none;
+}
+body:not(:is([data-state="idle"],[data-state="cake"],[data-state="ice-cream"],[data-state="butterflies"],[data-state="watermelon"],[data-state="listening"],[data-state="idk"],[data-state="wondering"],[data-state="answering"])) .froggy{
+  display: none;
+}
+body:not(:is([data-state="idle"],[data-state="cake"],[data-state="ice-cream"],[data-state="butterflies"],[data-state="watermelon"],[data-state="listening"],[data-state="idk"],[data-state="wondering"],[data-state="answering"])) .froggy1{
+  display: none;
+}
 body[data-state="cake"]>section>.neznaika{
   background-image: url('../img/cake_magician.gif');
+  transform: translateX(4dvw) translateY(8dvh) scale(0.85);
 }
 body[data-state="ice-cream"]>section#city>div.neznaika{
   background-image: url('../img/ice-cream.gif');
@@ -727,19 +739,77 @@ bottom: 12.48dvh;
 }
 
 
-.daisy {
+.daisy1 {
   position: absolute;
-  display: none;
   z-index: 0;
   background-image: url('../img/daisy.gif');
   width: 30dvw;
   height: 30dvh;
   background-repeat: no-repeat;
   background-size: contain;
-}
-/* {
   left: 3dvw;
-  bottom: 37.48dvh;} */
+  bottom: 37.48dvh;
+  }
+.daisy2 {
+  position: absolute;
+  z-index: 0;
+  background-image: url('../img/daisy.gif');
+  width: 30dvw;
+  height: 60dvh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  left: 41dvw;
+  bottom: 25dvh;
+  }
+.froggy {
+  position: absolute;
+  z-index: 0;
+  display:block;
+  background-image: url('../img/fro.svg');
+  width: 15dvw;
+  height: 15dvh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 55dvh;
+  left: 0;
+  transform: scaleX(-1) rotateX(-16deg);
+  animation: 5s frogleap .1s linear both;
+  }
+.froggy1 {
+  position: absolute;
+  z-index: 0;
+  display:block;
+  background-image: url('../img/fro.svg');
+  width: 15dvw;
+  height: 15dvh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 55dvh;
+  left: 0;
+  transform: rotateX(-16deg);
+  animation: 5s frogleapback .1s linear both;
+  }
+
+  @keyframes frogleap {
+    0%{ transform: translateX(98dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
+    50%{ transform: translateX(58dvw) translateY(8dvw) scaleX(-1) rotateX(-16deg) rotate(15deg);}
+    100%  { transform: translateX(-20dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(60deg); }
+  }
+  @-webkit-keyframes frogleap {
+    0%{ transform: translateX(98dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(-30deg);}
+    50%{ transform: translateX(58dvw) translateY(8dvw) scaleX(-1) rotateX(-16deg) rotate(15deg);}
+    100%  { transform: translateX(-20dvw) translateY(1dvw) scaleX(-1) rotateX(-16deg) rotate(60deg); }
+  }
+  @keyframes frogleapback {
+    0%{ transform: translateX(-2dvw) translateY(.1dvw) rotate(1deg); }
+    50%{ transform: translateX(50dvw) translateY(8dvw) rotate(30deg);}
+    100%{ transform: translateX(102dvw) translateY(.1dvw) rotate(60deg); }
+  }
+  @-webkit-keyframes frogleapback {
+    0%{ transform: translateX(-2dvw) translateY(.1dvw) rotate(1deg);}
+    50%{ transform: translateX(50dvw) translateY(8dvw) rotate(30deg);}
+    100% { transform: translateX(102dvw) translateY(.1dvw) rotate(60deg);}
+  }
 
 @-webkit-keyframes fadein {
   0%{ opacity: 0 }

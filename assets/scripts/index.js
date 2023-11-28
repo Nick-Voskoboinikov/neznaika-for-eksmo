@@ -314,13 +314,25 @@ function goodbye(){
 
 }
 
+function randomDaisies() {
+const coinflip = (max) => {return Math.floor(Math.random() * max);}
+const randomCreatures = document.querySelector('#randomCreature').classList;
+const possibleCreatureValues = [`daisy1`,`daisy2`,`froggy`,`froggy1`];
+    if(randomCreatures.length==0){
+    const random1 = coinflip(possibleCreatureValues.length);
+    let creature=possibleCreatureValues[random1];
+    randomCreatures.toggle(creature);
+    setTimeout(function(){randomCreatures.remove(creature);},5000);
+    }
+}
+
 function fishes(){
 console.log('Креатив и фишечки)');
 if(document.body.getAttribute('data-state') == 'idle'){
     let lastAnsweredTime=(Math.floor((new Date()).valueOf()/1000)) - lastAnswerTime;
     if(lastAnsweredTime > 30){ // если последний ответ больше 30 секунд назад
-    // const possibleValues = [`butterflies`,`ice-cream`,`cake`,`watermelon`];
-    const possibleValues = [`butterflies`,`ice-cream`];
+    // const possibleValues = [`butterflies`,`ice-cream`,`cake`];
+    const possibleValues = [`butterflies`,`ice-cream`,`watermelon`];
     const coinflip = (max) => {return Math.floor(Math.random() * max);}
     const random1 = coinflip(possibleValues.length);   
     document.body.setAttribute('data-state', possibleValues[random1]);
@@ -330,7 +342,9 @@ if(document.body.getAttribute('data-state') == 'idle'){
 purgechat();
 }
 function purgechat(){
-
+    while(document.querySelectorAll('.book>p').length > 18){
+        document.querySelector('.book>p:first-of-type').remove();
+    }
 }
 
 function onGetResponse(jsonstring="",status='answering'){
@@ -490,8 +504,4 @@ function startTheParty(){
 document.querySelector('#go').focus();
 
 
-randomDaises = setInterval(randomDaisies,20000);
-
-function randomDaisies() {
- return 0;
-}
+randomDaises = setInterval(randomDaisies,15000);
