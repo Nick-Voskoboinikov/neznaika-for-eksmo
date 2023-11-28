@@ -154,7 +154,7 @@ body[data-state="break"]>section>.neznaika{
   animation: 6s 1 normal ease-out .5s leave;
 }
 
-body[data-state="break"] #turbosnail,body[data-state="welcome"] #turbosnail,body[data-state="loader"] #turbosnail,body[data-state="inbreak"] #turbosnail,body[data-state="goodbye"] #turbosnail{
+body[data-state="break"] #turbosnail,body[data-state="welcome"] #turbosnail,body[data-state="loader"] #turbosnail,body[data-state="goodbye"] #turbosnail{
   display: none;
 }
 
