@@ -961,7 +961,7 @@ bottom: 15dvh;
 }
 @media screen and (min-width: 1537px) and (max-width: 2559px) {
   section#city>div>div.book{
-    padding: 1em 1em 5em 1em;
+    padding: 1em 1em 8.25em 1em;
     }
   div.book> p {
     font-size: clamp(16px,36px,56px);
@@ -997,7 +997,7 @@ bottom: 15dvh;
 }
 @media screen and (min-width: 1441px) and (max-width: 1535px) {
   section#city>div>div.book{
-    padding: 1em 1em 4em 1em;
+    padding: 1em 1em 6.45em 1em;
     }
   div.btnwrapper{
   height: 20dvh;
