@@ -1003,8 +1003,8 @@ bottom: 15dvh;
   height: 20dvh;
   }
   div.book> p {
-    font-size: clamp(32px,40px,48px);
-    line-height: clamp(45px,46px,47px);
+    font-size: clamp(18px,20px,48px);
+    line-height: clamp(32px,36px,47px);
   }
   button#go {
     font-size: clamp(32px,61px,90px);
