@@ -372,8 +372,8 @@ body[data-state="goodbye"] #city > div:has(div.book):before{
   [type="button"],
   [type="reset"],
   [type="submit"] {
-    appearance: button;
     -webkit-appearance: button;
+    appearance: button;
   }
   
   /**
