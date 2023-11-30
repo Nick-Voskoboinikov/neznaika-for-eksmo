@@ -251,7 +251,13 @@ function stopbreak(){
     setTimeout(function(){
         ListeniningInitiated=0;
         recognitionPaused=0;
-        recognition.start();},1200);
+        try{
+        recognition.start();
+            }
+        catch(err){
+            console.log(err);
+            }
+    },1200);
     setTimeout(function(){
         document.body.setAttribute('data-state', 'idle');
     },3750);
@@ -281,7 +287,11 @@ function startbreak(){
     document.body.setAttribute('data-state', 'break');
 
     setTimeout(function(){
-        document.querySelector('#city').style.backgroundImage='url("./assets/img/bg1.svg")';
+        document.querySelector('#city').style.backgroundImage='url(\'./assets/img/bg1.svg\')';
+        document.querySelector('#city').style.backgroundSize='cover';
+        document.querySelector('#city').style.backgroundRepeat='no-repeat';
+        document.querySelector('#city').style.backgroundClip='border-box';
+        document.querySelector('#city').style.backgroundPosition='bottom left';
         document.querySelector('#city>.neznaika').style.transform='translateX(0) scale(1)';
         setTimeout(function(){
             document.body.setAttribute('data-state', 'inbreak');
