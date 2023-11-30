@@ -629,8 +629,8 @@ section#city>div:has(div.book){
   align-items: flex-end;
   flex-direction: column;
   justify-content: flex-end;
-  right: 3dvw;
-  width: 36dvw;
+  right: 1.8dvw;
+  width: 37.4dvw;
   height: 100%;
 }
 section#city>div:has(div.book):before{
@@ -732,8 +732,8 @@ img.hb {
  .logo{
   position: relative;
   z-index: 3;
-  margin: 1.25dvh 2.34dvw;
-  width: 14dvw;
+  margin: 1.25dvh 2.49dvw;
+  width: 12.9dvw;
   cursor: pointer;
 }
 .logo>img{
@@ -964,8 +964,8 @@ bottom: 15dvh;
     padding: 1em 1em 8.25em 1em;
     }
   div.book> p {
-    font-size: clamp(16px,36px,56px);
-    line-height: clamp(36px,48px,86px);
+    font-size: clamp(16px,33px,56px);
+    line-height: clamp(36px,39px,86px);
   }
   
   button#go {
